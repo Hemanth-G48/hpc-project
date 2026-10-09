@@ -1,0 +1,60 @@
+ Percent |	Source code & Disassembly of sparselu_seq for cpu-clock:u (1876 samples, percent: local period)
+---------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3    Disassembly of section .text:
+         :
+         : 5    0000000000002280 <factorize>:
+         : 6    b[j] = s / LU[j * m + j];
+         : 7    }
+         : 8    }
+         :
+         : 10   static void NOINLINE factorize(double *D, double *L, double *U, int nb, int bs)
+         : 11   {
+    0.00 :   2280:   push   %rbp
+         : 13   size_t bsz = (size_t)bs * bs;
+    0.00 :   2281:   mov    %r8d,%eax
+         : 15   {
+    0.00 :   2284:   mov    %rsp,%rbp
+    0.00 :   2287:   push   %r15
+    0.00 :   2289:   push   %r14
+    0.00 :   228b:   push   %r13
+    0.00 :   228d:   lea    0x0(,%rax,8),%r13
+    0.00 :   2295:   push   %r12
+    0.00 :   2297:   mov    %r13,%r14
+    0.00 :   229a:   push   %rbx
+         : 24   size_t bsz = (size_t)bs * bs;
+    0.00 :   229b:   mov    %rax,%rbx
+    0.00 :   229e:   imul   %rax,%rbx
+         : 27   {
+    0.00 :   22a2:   sub    $0x70,%rsp
+         : 29   size_t bsz = (size_t)bs * bs;
+    0.00 :   22a6:   mov    %rax,-0x98(%rbp)
+    0.00 :   22ad:   lea    0x8(%r13),%rax
+    0.00 :   22b1:   mov    %rax,-0xa0(%rbp)
+    0.00 :   22b8:   lea    0x1(%r8),%eax
+    0.00 :   22bc:   cltq
+    0.00 :   22be:   mov    %rbx,-0xd8(%rbp)
+         : 36   for (int k = 0; k < nb; k++) {
+    0.00 :   22c5:   shl    $0x3,%rbx
+    0.00 :   22c9:   shl    $0x3,%rax
+         : 39   {
+    0.00 :   22cd:   mov    %rdi,-0x78(%rbp)
+    0.00 :   22d1:   mov    %rax,-0xe0(%rbp)
+    0.00 :   22d8:   lea    (%rsi,%r13,1),%rax
+    0.00 :   22dc:   mov    %r8d,%r13d
+    0.00 :   22df:   mov    %rax,-0xf0(%rbp)
+    0.00 :   22e6:   lea    (%rdi,%rbx,1),%rax
+    0.00 :   22ea:   mov    %rax,-0xf8(%rbp)
+    0.00 :   22f1:   mov    %r8d,%eax
+    0.00 :   22f4:   shr    $1,%eax
+         : 49   size_t bsz = (size_t)bs * bs;
+    0.00 :   22f6:   mov    %rdi,-0xa8(%rbp)
+    0.00 :   22fd:   mov    %rdx,%rdi
+    0.00 :   2300:   mov    %rdx,-0xc0(%rbp)
+    0.00 :   2307:   mov    %eax,%edx
+    0.00 :   2309:   shl    $0x4,%rdx
+         : 55   {
+    0.00 :   230d:   mov    %ecx,-0xfc(%rbp)
+    0.00 :   2313:   mov    %rsi,-0xd0(%rbp)

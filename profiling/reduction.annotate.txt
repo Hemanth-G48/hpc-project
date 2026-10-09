@@ -1,0 +1,60 @@
+ Percent |	Source code & Disassembly of reduction_seq for cpu-clock:u (1142 samples, percent: local period)
+----------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3    Disassembly of section .text:
+         :
+         : 5    00000000000015c0 <reduce_kernel>:
+         : 6    while (j < n2)
+         : 7    out[k++] = b[j++];
+         : 8    }
+         :
+         : 10   static void NOINLINE reduce_kernel(double **ap, double **bp, unsigned long n, int depth)
+         : 11   {
+    0.00 :   15c0:   push   %rbp
+    0.00 :   15c1:   mov    %rsp,%rbp
+    0.00 :   15c4:   push   %r15
+    0.00 :   15c6:   push   %r14
+    0.00 :   15c8:   push   %r13
+    0.00 :   15ca:   push   %r12
+    0.00 :   15cc:   push   %rbx
+    0.00 :   15cd:   mov    %rdx,-0x60(%rbp)
+         : 20   double *cur = *ap;
+         : 21   double *alt = *bp;
+         : 22   unsigned long run = n >> depth;
+    0.00 :   15d1:   shr    %cl,%rdx
+    0.00 :   15d4:   mov    %rdx,-0x48(%rbp)
+         : 25   double *cur = *ap;
+    0.00 :   15d8:   mov    (%rdi),%r15
+         : 27   double *alt = *bp;
+    0.00 :   15db:   mov    (%rsi),%rbx
+    0.00 :   15de:   movl   $0x0,-0x64(%rbp)
+    0.00 :   15e5:   mov    %rdi,-0x70(%rbp)
+    0.00 :   15e9:   mov    %rbx,-0x38(%rbp)
+         :
+         : 33   for (int level = 0; level < depth; level++) {
+    0.00 :   15ed:   mov    %rbx,%r9
+    0.00 :   15f0:   mov    %r15,%r8
+    0.00 :   15f3:   mov    %r15,-0x40(%rbp)
+    0.00 :   15f7:   mov    %rsi,-0x78(%rbp)
+    0.00 :   15fb:   mov    %ecx,-0x68(%rbp)
+    0.00 :   15fe:   xchg   %ax,%ax
+         : 40   unsigned long span = 2 * run;
+    0.00 :   1600:   mov    -0x48(%rbp),%rax
+    0.00 :   1604:   mov    %rax,%rdi
+    0.00 :   1607:   add    %rax,%rax
+    0.00 :   160a:   mov    %rax,-0x48(%rbp)
+         : 45   for (unsigned long start = 0; start < n; start += span)
+    0.00 :   160e:   mov    %rdi,%rax
+    0.00 :   1611:   shl    $0x4,%rax
+    0.00 :   1615:   mov    %rax,-0x58(%rbp)
+    0.00 :   1619:   lea    0x0(,%rdi,8),%rax
+    0.00 :   1621:   mov    %rax,-0x50(%rbp)
+         : 51   while (i < n1 && j < n2)
+    0.00 :   1625:   test   %rdi,%rdi
+    0.00 :   1628:   jne    1630 <reduce_kernel+0x70>
+    0.00 :   162a:   jmp    162a <reduce_kernel+0x6a>
+    0.00 :   162c:   nopl   0x0(%rax)
+    0.00 :   1630:   xor    %r13d,%r13d
+    0.00 :   1633:   xchg   %ax,%ax

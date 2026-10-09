@@ -1,0 +1,60 @@
+ Percent |	Source code & Disassembly of matmul_seq for cpu-clock:u (7012 samples, percent: local period)
+-------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3    Disassembly of section .text:
+         :
+         : 5    0000000000001490 <matmul>:
+         : 6    m[i] = frand01(&s);
+         : 7    }
+         :
+         : 9    static void NOINLINE matmul(double *restrict C, const double *restrict A,
+         : 10   const double *restrict B, int n, int bs)
+         : 11   {
+    0.00 :   1490:   push   %rbp
+    0.00 :   1491:   mov    %ecx,%eax
+    0.00 :   1493:   mov    %rdi,%rcx
+    0.00 :   1496:   mov    %rsp,%rbp
+    0.00 :   1499:   push   %r15
+    0.00 :   149b:   lea    0x0(,%rax,8),%r15
+    0.00 :   14a3:   push   %r14
+    0.00 :   14a5:   mov    %rax,%r14
+    0.00 :   14a8:   push   %r13
+    0.00 :   14aa:   push   %r12
+         : 22   for (int i = 0; i < n; i++)
+    0.00 :   14ac:   xor    %r12d,%r12d
+         : 24   {
+    0.00 :   14af:   push   %rbx
+    0.00 :   14b0:   mov    %rsi,%rbx
+    0.00 :   14b3:   sub    $0xa8,%rsp
+    0.00 :   14ba:   mov    %rdi,-0x50(%rbp)
+    0.00 :   14be:   mov    %rdx,-0x48(%rbp)
+    0.00 :   14c2:   mov    %r8d,-0x78(%rbp)
+    0.00 :   14c6:   mov    %rdi,-0x88(%rbp)
+         : 32   for (int j = 0; j < n; j++)
+         : 33   C[i * n + j] = 0.0;
+    0.00 :   14cd:   mov    %rcx,%rdi
+    0.00 :   14d0:   mov    %r15,%rdx
+    0.00 :   14d3:   xor    %esi,%esi
+         : 37   for (int i = 0; i < n; i++)
+    0.00 :   14d5:   add    $0x1,%r12d
+         : 39   C[i * n + j] = 0.0;
+    0.00 :   14d9:   call   1060 <memset@plt>
+         : 41   for (int i = 0; i < n; i++)
+    0.00 :   14de:   lea    (%rax,%r15,1),%rcx
+    0.00 :   14e2:   cmp    %r12d,%r14d
+    0.00 :   14e5:   jne    14cd <matmul+0x3d>
+    0.00 :   14e7:   mov    -0x78(%rbp),%edi
+    0.00 :   14ea:   mov    %r12d,-0x7c(%rbp)
+    0.00 :   14ee:   mov    %rbx,-0x98(%rbp)
+    0.00 :   14f5:   mov    %edi,%eax
+    0.00 :   14f7:   mov    %edi,%ebx
+         :
+         : 51   for (int ii = 0; ii < n; ii += bs)
+    0.00 :   14f9:   movl   $0x0,-0x58(%rbp)
+    0.00 :   1500:   imul   %r14d,%eax
+    0.00 :   1504:   mov    %rbx,-0xa0(%rbp)
+         : 55   for (int i = 0; i < n; i++)
+    0.00 :   150b:   movq   $0x0,-0x90(%rbp)
+    0.00 :   1516:   cltq

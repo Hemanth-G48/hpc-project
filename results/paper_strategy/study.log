@@ -1,0 +1,126 @@
+== rep 1 / 5 ==
+  map        omp                      -> 0.040356s
+  map        ps  coarse   standard  vic=0  -> 0.039035s
+  map        ps  coarse   locality  vic=0  -> 0.048781s
+  map        ps  coarse   locality  vic=1  -> 0.054777s
+  map        ps  coarse   locality  vic=2  -> 0.061012s
+  map        ps  fine     locality  vic=0  -> 0.040421s
+  vecmul     omp                      -> 0.176438s
+  vecmul     ps  coarse   standard  vic=0  -> 0.183826s
+  vecmul     ps  coarse   locality  vic=0  -> 0.175662s
+  vecmul     ps  coarse   locality  vic=1  -> 0.183766s
+  vecmul     ps  coarse   locality  vic=2  -> 0.163988s
+  vecmul     ps  fine     locality  vic=0  -> 0.170167s
+  reduction  omp                      -> 0.171691s
+  reduction  ps  coarse   standard  vic=0  -> 0.218133s
+  reduction  ps  coarse   locality  vic=0  -> 0.212975s
+  reduction  ps  coarse   locality  vic=1  -> 0.264033s
+  reduction  ps  coarse   locality  vic=2  -> 0.226973s
+  reduction  ps  fine     locality  vic=0  -> 0.199940s
+  matmul     omp                      -> 0.053844s
+  matmul     ps  coarse   standard  vic=0  -> 0.043043s
+  matmul     ps  coarse   locality  vic=0  -> 0.041413s
+  matmul     ps  coarse   locality  vic=1  -> 0.106090s
+  matmul     ps  coarse   locality  vic=2  -> 0.063594s
+  matmul     ps  fine     locality  vic=0  -> 0.041892s
+== rep 2 / 5 ==
+  map        omp                      -> 0.052227s
+  map        ps  coarse   standard  vic=0  -> 0.037777s
+  map        ps  coarse   locality  vic=0  -> 0.038897s
+  map        ps  coarse   locality  vic=1  -> 0.049793s
+  map        ps  coarse   locality  vic=2  -> 0.040989s
+  map        ps  fine     locality  vic=0  -> 0.037618s
+  vecmul     omp                      -> 0.181285s
+  vecmul     ps  coarse   standard  vic=0  -> 0.174864s
+  vecmul     ps  coarse   locality  vic=0  -> 0.168530s
+  vecmul     ps  coarse   locality  vic=1  -> 0.167956s
+  vecmul     ps  coarse   locality  vic=2  -> 0.167163s
+  vecmul     ps  fine     locality  vic=0  -> 0.171454s
+  reduction  omp                      -> 0.174108s
+  reduction  ps  coarse   standard  vic=0  -> 0.188514s
+  reduction  ps  coarse   locality  vic=0  -> 0.185554s
+  reduction  ps  coarse   locality  vic=1  -> 0.242187s
+  reduction  ps  coarse   locality  vic=2  -> 0.210680s
+  reduction  ps  fine     locality  vic=0  -> 0.176876s
+  matmul     omp                      -> 0.055451s
+  matmul     ps  coarse   standard  vic=0  -> 0.042689s
+  matmul     ps  coarse   locality  vic=0  -> 0.044671s
+  matmul     ps  coarse   locality  vic=1  -> 0.101987s
+  matmul     ps  coarse   locality  vic=2  -> 0.067900s
+  matmul     ps  fine     locality  vic=0  -> 0.042856s
+== rep 3 / 5 ==
+  map        omp                      -> 0.049942s
+  map        ps  coarse   standard  vic=0  -> 0.038790s
+  map        ps  coarse   locality  vic=0  -> 0.057087s
+  map        ps  coarse   locality  vic=1  -> 0.054039s
+  map        ps  coarse   locality  vic=2  -> 0.040110s
+  map        ps  fine     locality  vic=0  -> 0.041732s
+  vecmul     omp                      -> 0.185425s
+  vecmul     ps  coarse   standard  vic=0  -> 0.174772s
+  vecmul     ps  coarse   locality  vic=0  -> 0.185993s
+  vecmul     ps  coarse   locality  vic=1  -> 0.168222s
+  vecmul     ps  coarse   locality  vic=2  -> 0.180096s
+  vecmul     ps  fine     locality  vic=0  -> 0.169585s
+  reduction  omp                      -> 0.171242s
+  reduction  ps  coarse   standard  vic=0  -> 0.203272s
+  reduction  ps  coarse   locality  vic=0  -> 0.181074s
+  reduction  ps  coarse   locality  vic=1  -> 0.248252s
+  reduction  ps  coarse   locality  vic=2  -> 0.206004s
+  reduction  ps  fine     locality  vic=0  -> 0.196700s
+  matmul     omp                      -> 0.047387s
+  matmul     ps  coarse   standard  vic=0  -> 0.039077s
+  matmul     ps  coarse   locality  vic=0  -> 0.040716s
+  matmul     ps  coarse   locality  vic=1  -> 0.103261s
+  matmul     ps  coarse   locality  vic=2  -> 0.065359s
+  matmul     ps  fine     locality  vic=0  -> 0.044319s
+== rep 4 / 5 ==
+  map        omp                      -> 0.047992s
+  map        ps  coarse   standard  vic=0  -> 0.036128s
+  map        ps  coarse   locality  vic=0  -> 0.051857s
+  map        ps  coarse   locality  vic=1  -> 0.038252s
+  map        ps  coarse   locality  vic=2  -> 0.035323s
+  map        ps  fine     locality  vic=0  -> 0.035144s
+  vecmul     omp                      -> 0.191441s
+  vecmul     ps  coarse   standard  vic=0  -> 0.154188s
+  vecmul     ps  coarse   locality  vic=0  -> 0.189011s
+  vecmul     ps  coarse   locality  vic=1  -> 0.170329s
+  vecmul     ps  coarse   locality  vic=2  -> 0.169396s
+  vecmul     ps  fine     locality  vic=0  -> 0.174254s
+  reduction  omp                      -> 0.174496s
+  reduction  ps  coarse   standard  vic=0  -> 0.189736s
+  reduction  ps  coarse   locality  vic=0  -> 0.184043s
+  reduction  ps  coarse   locality  vic=1  -> 0.248155s
+  reduction  ps  coarse   locality  vic=2  -> 0.219735s
+  reduction  ps  fine     locality  vic=0  -> 0.191080s
+  matmul     omp                      -> 0.053446s
+  matmul     ps  coarse   standard  vic=0  -> 0.039987s
+  matmul     ps  coarse   locality  vic=0  -> 0.041511s
+  matmul     ps  coarse   locality  vic=1  -> 0.102766s
+  matmul     ps  coarse   locality  vic=2  -> 0.063499s
+  matmul     ps  fine     locality  vic=0  -> 0.042059s
+== rep 5 / 5 ==
+  map        omp                      -> 0.045995s
+  map        ps  coarse   standard  vic=0  -> 0.037048s
+  map        ps  coarse   locality  vic=0  -> 0.041107s
+  map        ps  coarse   locality  vic=1  -> 0.045655s
+  map        ps  coarse   locality  vic=2  -> 0.046751s
+  map        ps  fine     locality  vic=0  -> 0.037204s
+  vecmul     omp                      -> 0.180606s
+  vecmul     ps  coarse   standard  vic=0  -> 0.176235s
+  vecmul     ps  coarse   locality  vic=0  -> 0.175143s
+  vecmul     ps  coarse   locality  vic=1  -> 0.174800s
+  vecmul     ps  coarse   locality  vic=2  -> 0.175547s
+  vecmul     ps  fine     locality  vic=0  -> 0.171780s
+  reduction  omp                      -> 0.172465s
+  reduction  ps  coarse   standard  vic=0  -> 0.187891s
+  reduction  ps  coarse   locality  vic=0  -> 0.208892s
+  reduction  ps  coarse   locality  vic=1  -> 0.254458s
+  reduction  ps  coarse   locality  vic=2  -> 0.220289s
+  reduction  ps  fine     locality  vic=0  -> 0.196630s
+  matmul     omp                      -> 0.050229s
+  matmul     ps  coarse   standard  vic=0  -> 0.043087s
+  matmul     ps  coarse   locality  vic=0  -> 0.044028s
+  matmul     ps  coarse   locality  vic=1  -> 0.107887s
+  matmul     ps  coarse   locality  vic=2  -> 0.065340s
+  matmul     ps  fine     locality  vic=0  -> 0.043298s
+results: results/paper_strategy/strategy.csv (stats: results/paper_strategy/stats.log)

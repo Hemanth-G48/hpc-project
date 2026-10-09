@@ -1,0 +1,60 @@
+ Percent |	Source code & Disassembly of map_seq for cpu-clock:u (1446 samples, percent: local period)
+----------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3    Disassembly of section .text:
+         :
+         : 5    0000000000001460 <map_kernel.constprop.0>:
+         : 6    #include <stdio.h>
+         : 7    #include <stdlib.h>
+         : 8    #include "common.h"
+         :
+         : 10   static void NOINLINE map_kernel(double *v, int nv, int len, int reps, double alpha)
+    0.00 :   1460:   push   %rbp
+    0.00 :   1461:   mov    %edx,%r10d
+    0.00 :   1464:   movsd  0xc24(%rip),%xmm1        # 2090 <_IO_stdin_used+0x90>
+    0.00 :   146c:   mov    %r10d,%r9d
+         : 15   {
+         : 16   for (int r = 0; r < reps; r++)
+         : 17   for (int k = 0; k < nv; k++) {
+         : 18   double *vec = v + (size_t)k * len;
+         : 19   for (int j = 0; j < len; j++)
+         : 20   vec[j] *= alpha;
+    0.00 :   146f:   movsd  0xc19(%rip),%xmm2        # 2090 <_IO_stdin_used+0x90>
+         : 22   static void NOINLINE map_kernel(double *v, int nv, int len, int reps, double alpha)
+    0.00 :   1477:   mov    %r10,%r8
+    0.00 :   147a:   lea    0x0(,%r10,8),%r11
+    0.00 :   1482:   shr    $1,%r9d
+    0.00 :   1485:   unpcklpd %xmm1,%xmm1
+    0.00 :   1489:   mov    %rsp,%rbp
+    0.00 :   148c:   push   %r15
+    0.00 :   148e:   mov    %ecx,%r15d
+    0.00 :   1491:   push   %r14
+         : 31   for (int r = 0; r < reps; r++)
+    0.00 :   1493:   xor    %r14d,%r14d
+         : 33   static void NOINLINE map_kernel(double *v, int nv, int len, int reps, double alpha)
+    0.00 :   1496:   push   %r13
+    0.00 :   1498:   mov    %r9d,%r13d
+    0.00 :   149b:   add    %r9d,%r9d
+    0.00 :   149e:   push   %r12
+    0.00 :   14a0:   shl    $0x4,%r13
+    0.00 :   14a4:   mov    %rdi,%r12
+    0.00 :   14a7:   push   %rbx
+    0.00 :   14a8:   mov    %esi,%ebx
+    0.00 :   14aa:   nopw   0x0(%rax,%rax,1)
+         : 43   for (int k = 0; k < nv; k++) {
+    0.00 :   14b0:   mov    %r12,%rcx
+         : 45   static void NOINLINE map_kernel(double *v, int nv, int len, int reps, double alpha)
+    0.00 :   14b3:   xor    %edi,%edi
+         : 47   for (int k = 0; k < nv; k++) {
+    0.00 :   14b5:   xor    %esi,%esi
+    0.00 :   14b7:   nopw   0x0(%rax,%rax,1)
+         : 50   for (int j = 0; j < len; j++)
+    0.00 :   14c0:   cmp    $0x1,%r8d
+    0.00 :   14c4:   je     1558 <map_kernel.constprop.0+0xf8>
+    0.00 :   14ca:   lea    0x0(%r13,%rcx,1),%rdx
+         : 54   for (int k = 0; k < nv; k++) {
+    0.00 :   14cf:   mov    %rcx,%rax
+    0.00 :   14d2:   nopl   (%rax)
+    0.00 :   14d5:   data16 cs nopw 0x0(%rax,%rax,1)

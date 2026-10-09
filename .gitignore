@@ -1,0 +1,5 @@
+build/
+.commandcode/
+*.perf.data
+*.perf.data.old
+gmon.out

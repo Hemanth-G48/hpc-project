@@ -1,0 +1,60 @@
+ Percent |	Source code & Disassembly of kmeans_seq for cpu-clock:u (5778 samples, percent: local period)
+-------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3    Disassembly of section .text:
+         :
+         : 5    00000000000017c0 <iterate>:
+         : 6    return h;
+         : 7    }
+         :
+         : 9    static int NOINLINE iterate(const double *pts, double *cen, double *sum, int *cnt, int *lab,
+         : 10   int np, int k, int d, int iters, double *inertia_out)
+         : 11   {
+    0.00 :   17c0:   push   %rbp
+    0.00 :   17c1:   mov    %rsp,%rbp
+    0.00 :   17c4:   push   %r15
+    0.00 :   17c6:   mov    %r8,%r15
+    0.00 :   17c9:   push   %r14
+    0.00 :   17cb:   push   %r13
+    0.00 :   17cd:   push   %r12
+    0.00 :   17cf:   push   %rbx
+    0.00 :   17d0:   mov    %rsi,%rbx
+    0.00 :   17d3:   sub    $0x88,%rsp
+    0.00 :   17da:   mov    0x18(%rbp),%r14d
+         : 23   lab[i] = best;
+         : 24   moved++;
+         : 25   }
+         : 26   }
+         :
+         : 28   memset(sum, 0, (size_t)k * d * sizeof *sum);
+    0.00 :   17de:   mov    0x10(%rbp),%eax
+         : 30   {
+    0.00 :   17e1:   mov    %r8,-0x70(%rbp)
+    0.00 :   17e5:   mov    %rdi,-0x50(%rbp)
+         : 33   memset(sum, 0, (size_t)k * d * sizeof *sum);
+    0.00 :   17e9:   mov    %rax,%rsi
+         : 35   {
+    0.00 :   17ec:   mov    %rdx,-0x58(%rbp)
+    0.00 :   17f0:   mov    %r14d,%r13d
+    0.00 :   17f3:   mov    %r14,%r12
+    0.00 :   17f6:   lea    0x0(,%r14,8),%r8
+    0.00 :   17fe:   mov    %rcx,-0x68(%rbp)
+         : 41   for (int it = 0; it < iters; it++) {
+    0.00 :   1802:   and    $0xfffffffe,%r13d
+         : 43   memset(sum, 0, (size_t)k * d * sizeof *sum);
+    0.00 :   1806:   imul   %r8,%rsi
+         : 45   int actual = 0;
+    0.00 :   180a:   movl   $0x0,-0x48(%rbp)
+         : 47   memset(sum, 0, (size_t)k * d * sizeof *sum);
+    0.00 :   1811:   mov    %rsi,-0x80(%rbp)
+         : 49   memset(cnt, 0, (size_t)k * sizeof *cnt);
+    0.00 :   1815:   lea    0x0(,%rax,4),%rsi
+    0.00 :   181d:   mov    %r9d,%eax
+    0.00 :   1820:   lea    (%r15,%rax,4),%rax
+    0.00 :   1824:   mov    %rsi,-0x88(%rbp)
+    0.00 :   182b:   mov    %rax,-0x38(%rbp)
+    0.00 :   182f:   lea    -0x1(%r14),%eax
+    0.00 :   1833:   mov    %eax,-0x44(%rbp)
+    0.00 :   1836:   lea    (%rcx,%rsi,1),%rax

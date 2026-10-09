@@ -1,0 +1,536 @@
+ Percent |	Source code & Disassembly of matmul_seq for cpu-clock:u (7012 samples, percent: local period)
+-------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3    Disassembly of section .text:
+         :
+         : 5    0000000000001490 <matmul>:
+         : 6    m[i] = frand01(&s);
+         : 7    }
+         :
+         : 9    static void NOINLINE matmul(double *restrict C, const double *restrict A,
+         : 10   const double *restrict B, int n, int bs)
+         : 11   {
+    0.00 :   1490:   push   %rbp
+    0.00 :   1491:   mov    %ecx,%eax
+    0.00 :   1493:   mov    %rdi,%rcx
+    0.00 :   1496:   mov    %rsp,%rbp
+    0.00 :   1499:   push   %r15
+    0.00 :   149b:   lea    0x0(,%rax,8),%r15
+    0.00 :   14a3:   push   %r14
+    0.00 :   14a5:   mov    %rax,%r14
+    0.00 :   14a8:   push   %r13
+    0.00 :   14aa:   push   %r12
+         : 22   for (int i = 0; i < n; i++)
+    0.00 :   14ac:   xor    %r12d,%r12d
+         : 24   {
+    0.00 :   14af:   push   %rbx
+    0.00 :   14b0:   mov    %rsi,%rbx
+    0.00 :   14b3:   sub    $0xa8,%rsp
+    0.00 :   14ba:   mov    %rdi,-0x50(%rbp)
+    0.00 :   14be:   mov    %rdx,-0x48(%rbp)
+    0.00 :   14c2:   mov    %r8d,-0x78(%rbp)
+    0.00 :   14c6:   mov    %rdi,-0x88(%rbp)
+         : 32   for (int j = 0; j < n; j++)
+         : 33   C[i * n + j] = 0.0;
+    0.00 :   14cd:   mov    %rcx,%rdi
+    0.00 :   14d0:   mov    %r15,%rdx
+    0.00 :   14d3:   xor    %esi,%esi
+         : 37   for (int i = 0; i < n; i++)
+    0.00 :   14d5:   add    $0x1,%r12d
+         : 39   C[i * n + j] = 0.0;
+    0.00 :   14d9:   call   1060 <memset@plt>
+         : 41   for (int i = 0; i < n; i++)
+    0.00 :   14de:   lea    (%rax,%r15,1),%rcx
+    0.00 :   14e2:   cmp    %r12d,%r14d
+    0.00 :   14e5:   jne    14cd <matmul+0x3d>
+    0.00 :   14e7:   mov    -0x78(%rbp),%edi
+    0.00 :   14ea:   mov    %r12d,-0x7c(%rbp)
+    0.00 :   14ee:   mov    %rbx,-0x98(%rbp)
+    0.00 :   14f5:   mov    %edi,%eax
+    0.00 :   14f7:   mov    %edi,%ebx
+         :
+         : 51   for (int ii = 0; ii < n; ii += bs)
+    0.00 :   14f9:   movl   $0x0,-0x58(%rbp)
+    0.00 :   1500:   imul   %r14d,%eax
+    0.00 :   1504:   mov    %rbx,-0xa0(%rbp)
+         : 55   for (int i = 0; i < n; i++)
+    0.00 :   150b:   movq   $0x0,-0x90(%rbp)
+    0.00 :   1516:   cltq
+    0.00 :   1518:   lea    0x0(,%rax,8),%rdx
+         : 59   for (int kk = 0; kk < n; kk += bs)
+    0.00 :   1520:   mov    -0x58(%rbp),%ebx
+         : 61   for (int jj = 0; jj < n; jj += bs)
+         : 62   for (int i = ii; i < ii + bs; i++)
+    0.00 :   1523:   movq   $0x0,-0x68(%rbp)
+    0.00 :   152b:   movq   $0x0,-0x60(%rbp)
+    0.00 :   1533:   mov    %ebx,-0x80(%rbp)
+    0.00 :   1536:   add    -0x78(%rbp),%ebx
+    0.00 :   1539:   mov    %ebx,-0x58(%rbp)
+         : 68   for (int jj = 0; jj < n; jj += bs)
+    0.00 :   153c:   mov    -0x48(%rbp),%rbx
+    0.00 :   1540:   mov    -0x68(%rbp),%rdi
+         : 71   for (int i = ii; i < ii + bs; i++)
+    0.00 :   1544:   xor    %r9d,%r9d
+         : 73   for (int jj = 0; jj < n; jj += bs)
+    0.00 :   1547:   xor    %r8d,%r8d
+    0.00 :   154a:   mov    -0x60(%rbp),%rcx
+    0.00 :   154e:   mov    %rdx,-0xa8(%rbp)
+    0.00 :   1555:   lea    (%rbx,%rdi,8),%rdi
+    0.00 :   1559:   mov    %rax,-0xb0(%rbp)
+    0.00 :   1560:   mov    -0x78(%rbp),%ebx
+    0.00 :   1563:   lea    (%rbx,%rcx,1),%r13d
+         : 81   for (int i = ii; i < ii + bs; i++)
+    0.01 :   1567:   mov    -0x88(%rbp),%rax
+    0.00 :   156e:   mov    %r8d,-0x74(%rbp)
+    0.00 :   1572:   lea    0x0(,%r9,8),%rdx
+    0.00 :   157a:   mov    $0x1,%r12d
+         : 86   for (int k = kk; k < kk + bs; k++) {
+         : 87   double a = A[i * n + k];
+         : 88   for (int j = jj; j < jj + bs; j++)
+    0.00 :   1580:   add    -0x78(%rbp),%r8d
+    0.00 :   1584:   lea    (%rdx,%rdi,1),%rcx
+         : 91   for (int i = ii; i < ii + bs; i++)
+    0.00 :   1588:   mov    -0x80(%rbp),%esi
+    0.00 :   158b:   mov    %rdi,-0xc0(%rbp)
+    0.00 :   1592:   add    %rdx,%rax
+    0.00 :   1595:   mov    %r8d,%edx
+    0.00 :   1598:   mov    %rcx,-0x70(%rbp)
+    0.00 :   159c:   mov    -0x90(%rbp),%ebx
+    0.00 :   15a2:   sub    %r9d,%edx
+    0.00 :   15a5:   cmp    %r9d,%r8d
+    0.00 :   15a8:   mov    %r8d,-0xb4(%rbp)
+         : 101  for (int j = jj; j < jj + bs; j++)
+    0.00 :   15af:   mov    -0x98(%rbp),%r10
+    0.00 :   15b6:   cmovg  %edx,%r12d
+    0.00 :   15ba:   cmp    $0x1,%edx
+    0.00 :   15bd:   mov    %r9,-0xc8(%rbp)
+    0.00 :   15c4:   sete   %cl
+    0.00 :   15c7:   cmp    %r9d,%r8d
+    0.00 :   15ca:   setle  %dl
+    0.00 :   15cd:   mov    %r12d,%r11d
+    0.00 :   15d0:   or     %edx,%ecx
+    0.00 :   15d2:   shr    $1,%r11d
+    0.00 :   15d5:   mov    -0x74(%rbp),%edx
+    0.00 :   15d8:   mov    %cl,-0x39(%rbp)
+    0.00 :   15db:   mov    %r11d,%ecx
+    0.00 :   15de:   add    %r11d,%r11d
+    0.00 :   15e1:   add    %r11d,%edx
+    0.00 :   15e4:   shl    $0x4,%rcx
+    0.00 :   15e8:   mov    %edx,-0x40(%rbp)
+    0.00 :   15eb:   nopl   0x0(%rax,%rax,1)
+         : 120  for (int k = kk; k < kk + bs; k++) {
+    0.03 :   15f0:   mov    -0x68(%rbp),%r8d
+         : 122  double a = A[i * n + k];
+    0.00 :   15f4:   mov    -0x70(%rbp),%rdx
+    0.04 :   15f8:   mov    %esi,-0x54(%rbp)
+    0.03 :   15fb:   mov    %rax,-0x38(%rbp)
+    0.00 :   15ff:   mov    -0x60(%rbp),%rdi
+    0.00 :   1603:   xchg   %ax,%ax
+    0.00 :   1605:   data16 cs nopw 0x0(%rax,%rax,1)
+    0.00 :   1610:   movsd  (%r10,%rdi,8),%xmm2
+         : 130  for (int j = jj; j < jj + bs; j++)
+    0.39 :   1616:   cmpb   $0x0,-0x39(%rbp)
+    0.00 :   161a:   jne    1770 <matmul+0x2e0>
+    0.04 :   1620:   mov    -0x38(%rbp),%rax
+    0.26 :   1624:   movapd %xmm2,%xmm1
+         : 135  double a = A[i * n + k];
+    0.19 :   1628:   xor    %esi,%esi
+    0.30 :   162a:   unpcklpd %xmm1,%xmm1
+    0.27 :   162e:   nopl   0x0(%rax)
+    0.09 :   1635:   data16 cs nopw 0x0(%rax,%rax,1)
+         : 140  C[i * n + j] += a * B[k * n + j];
+    7.90 :   1640:   movupd (%rdx,%rsi,1),%xmm0
+    8.91 :   1645:   movupd (%rax,%rsi,1),%xmm3
+    7.24 :   164a:   mulpd  %xmm1,%xmm0
+   11.11 :   164e:   addpd  %xmm3,%xmm0
+   21.95 :   1652:   movups %xmm0,(%rax,%rsi,1)
+         : 146  for (int j = jj; j < jj + bs; j++)
+   28.61 :   1656:   add    $0x10,%rsi
+   10.44 :   165a:   cmp    %rcx,%rsi
+    0.07 :   165d:   jne    1640 <matmul+0x1b0>
+    0.23 :   165f:   cmp    %r12d,%r11d
+    0.00 :   1662:   je     1750 <matmul+0x2c0>
+    0.00 :   1668:   mov    %rax,-0x38(%rbp)
+    0.00 :   166c:   mov    -0x40(%rbp),%esi
+         : 154  C[i * n + j] += a * B[k * n + j];
+    0.00 :   166f:   mov    -0x50(%rbp),%rax
+    0.00 :   1673:   lea    (%rbx,%rsi,1),%r9d
+    0.00 :   1677:   add    %r8d,%esi
+         : 158  for (int k = kk; k < kk + bs; k++) {
+    0.00 :   167a:   add    $0x1,%rdi
+         : 160  C[i * n + j] += a * B[k * n + j];
+    0.00 :   167e:   movslq %r9d,%r9
+    0.00 :   1681:   movslq %esi,%rsi
+         : 163  for (int k = kk; k < kk + bs; k++) {
+    0.00 :   1684:   add    %r14d,%r8d
+    0.00 :   1687:   add    %r15,%rdx
+         : 166  C[i * n + j] += a * B[k * n + j];
+    0.00 :   168a:   lea    (%rax,%r9,8),%r9
+    0.00 :   168e:   mov    -0x48(%rbp),%rax
+    0.00 :   1692:   mulsd  (%rax,%rsi,8),%xmm2
+    0.00 :   1697:   addsd  (%r9),%xmm2
+    0.00 :   169c:   movsd  %xmm2,(%r9)
+         : 172  for (int k = kk; k < kk + bs; k++) {
+    0.00 :   16a1:   cmp    %edi,%r13d
+    0.00 :   16a4:   jg     1610 <matmul+0x180>
+    0.00 :   16aa:   mov    -0x54(%rbp),%esi
+    0.00 :   16ad:   mov    -0x38(%rbp),%rax
+         : 177  for (int i = ii; i < ii + bs; i++)
+    0.03 :   16b1:   add    $0x1,%esi
+    0.00 :   16b4:   add    %r14d,%ebx
+    0.00 :   16b7:   add    %r15,%rax
+    0.00 :   16ba:   add    %r15,%r10
+    0.00 :   16bd:   cmp    -0x58(%rbp),%esi
+    0.06 :   16c0:   jl     15f0 <matmul+0x160>
+         : 184  for (int jj = 0; jj < n; jj += bs)
+    0.00 :   16c6:   mov    -0xc8(%rbp),%r9
+    0.00 :   16cd:   mov    -0xb4(%rbp),%r8d
+    0.00 :   16d4:   mov    -0xc0(%rbp),%rdi
+    0.00 :   16db:   add    -0xa0(%rbp),%r9
+    0.00 :   16e2:   cmp    %r8d,-0x7c(%rbp)
+    0.00 :   16e6:   jg     1567 <matmul+0xd7>
+         : 191  for (int kk = 0; kk < n; kk += bs)
+    0.00 :   16ec:   mov    -0xb0(%rbp),%rax
+    0.00 :   16f3:   mov    -0xa0(%rbp),%rdi
+    0.00 :   16fa:   add    %rax,-0x68(%rbp)
+    0.00 :   16fe:   mov    -0xa8(%rbp),%rdx
+    0.00 :   1705:   add    %rdi,-0x60(%rbp)
+    0.00 :   1709:   mov    -0x60(%rbp),%rbx
+    0.00 :   170d:   cmp    %ebx,-0x7c(%rbp)
+    0.00 :   1710:   jg     153c <matmul+0xac>
+         : 200  for (int ii = 0; ii < n; ii += bs)
+    0.00 :   1716:   add    %rdx,-0x98(%rbp)
+    0.00 :   171d:   mov    -0x58(%rbp),%edi
+    0.00 :   1720:   add    %rax,-0x90(%rbp)
+    0.00 :   1727:   add    %rdx,-0x88(%rbp)
+    0.00 :   172e:   cmp    %edi,-0x7c(%rbp)
+    0.00 :   1731:   jg     1520 <matmul+0x90>
+         : 207  }
+         : 208  }
+    0.00 :   1737:   add    $0xa8,%rsp
+    0.00 :   173e:   pop    %rbx
+    0.00 :   173f:   pop    %r12
+    0.00 :   1741:   pop    %r13
+    0.00 :   1743:   pop    %r14
+    0.00 :   1745:   pop    %r15
+    0.00 :   1747:   pop    %rbp
+    0.00 :   1748:   ret
+    0.00 :   1749:   nopl   0x0(%rax)
+         : 218  for (int k = kk; k < kk + bs; k++) {
+    0.19 :   1750:   add    $0x1,%rdi
+    0.24 :   1754:   cmp    %edi,%r13d
+    0.00 :   1757:   jle    1778 <matmul+0x2e8>
+         : 222  double a = A[i * n + k];
+    0.20 :   1759:   movsd  (%r10,%rdi,8),%xmm2
+         : 224  for (int k = kk; k < kk + bs; k++) {
+    0.29 :   175f:   add    %r14d,%r8d
+    0.33 :   1762:   add    %r15,%rdx
+         : 227  for (int j = jj; j < jj + bs; j++)
+    0.53 :   1765:   jmp    1624 <matmul+0x194>
+    0.00 :   176a:   nopw   0x0(%rax,%rax,1)
+    0.00 :   1770:   mov    -0x74(%rbp),%esi
+    0.00 :   1773:   jmp    166f <matmul+0x1df>
+    0.00 :   1778:   mov    -0x54(%rbp),%esi
+    0.04 :   177b:   jmp    16b1 <matmul+0x221>
+ Percent |	Source code & Disassembly of matmul_seq for cpu-clock:u (61 samples, percent: local period)
+-----------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3    Disassembly of section .text:
+         :
+         : 5    0000000000001400 <fill>:
+         : 6    #include "common.h"
+         :
+         : 8    static void NOINLINE fill(double *m, int n, uint64_t seed)
+         : 9    {
+         : 10   uint64_t s = seed;
+         : 11   for (int i = 0; i < n * n; i++)
+    0.00 :   1400:   imul   %esi,%esi
+    0.00 :   1403:   movsd  0xc9d(%rip),%xmm1        # 20a8 <_IO_stdin_used+0xa8>
+    0.00 :   140b:   lea    (%rdi,%rsi,8),%rcx
+    0.00 :   140f:   nopl   0x0(%rax,%rax,1)
+    0.00 :   1414:   data16 cs nopw 0x0(%rax,%rax,1)
+    0.00 :   141f:   data16 cs nopw 0x0(%rax,%rax,1)
+    0.00 :   142a:   data16 cs nopw 0x0(%rax,%rax,1)
+    0.00 :   1435:   data16 cs nopw 0x0(%rax,%rax,1)
+         : 20   }
+         :
+         : 22   static inline uint64_t xorshift64(uint64_t *s)
+         : 23   {
+         : 24   uint64_t x = *s;
+         : 25   x ^= x << 13;
+    9.84 :   1440:   mov    %rdx,%rax
+         : 27   return x;
+         : 28   }
+         :
+         : 30   static inline double frand01(uint64_t *s)
+         : 31   {
+         : 32   return (double)(xorshift64(s) >> 11) * (1.0 / 9007199254740992.0);
+    0.00 :   1443:   pxor   %xmm0,%xmm0
+    0.00 :   1447:   add    $0x8,%rdi
+         : 35   x ^= x << 13;
+    0.00 :   144b:   shl    $0xd,%rax
+   18.03 :   144f:   xor    %rdx,%rax
+         : 38   x ^= x >> 7;
+    0.00 :   1452:   mov    %rax,%rdx
+    0.00 :   1455:   shr    $0x7,%rdx
+    0.00 :   1459:   xor    %rdx,%rax
+         : 42   x ^= x << 17;
+   18.03 :   145c:   mov    %rax,%rdx
+    0.00 :   145f:   shl    $0x11,%rdx
+    0.00 :   1463:   xor    %rax,%rdx
+         : 46   return (double)(xorshift64(s) >> 11) * (1.0 / 9007199254740992.0);
+    0.00 :   1466:   mov    %rdx,%rax
+   16.39 :   1469:   shr    $0xb,%rax
+    0.00 :   146d:   cvtsi2sd %rax,%xmm0
+    0.00 :   1472:   mulsd  %xmm1,%xmm0
+         : 51   m[i] = frand01(&s);
+   24.59 :   1476:   movsd  %xmm0,-0x8(%rdi)
+         : 53   for (int i = 0; i < n * n; i++)
+   13.11 :   147b:   cmp    %rdi,%rcx
+    0.00 :   147e:   jne    1440 <fill+0x40>
+         : 56   }
+    0.00 :   1480:   ret
+ Percent |	Source code & Disassembly of matmul_seq for cpu-clock:u (11 samples, percent: local period)
+-----------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3    Disassembly of section .text:
+         :
+         : 5    00000000000010c0 <main>:
+         : 6    C[i * n + j] += a * B[k * n + j];
+         : 7    }
+         : 8    }
+         :
+         : 10   int main(int argc, char **argv)
+         : 11   {
+    0.00 :   10c0:   push   %rbp
+    0.00 :   10c1:   mov    %rsp,%rbp
+    0.00 :   10c4:   push   %r15
+    0.00 :   10c6:   mov    $0x400,%r15d
+    0.00 :   10cc:   push   %r14
+    0.00 :   10ce:   push   %r13
+    0.00 :   10d0:   push   %r12
+    0.00 :   10d2:   push   %rbx
+         : 20   int n = argc > 1 ? atoi(argv[1]) : 1024;
+         : 21   int bs = argc > 2 ? atoi(argv[2]) : 64;
+    0.00 :   10d3:   mov    $0x40,%ebx
+         : 23   {
+    0.00 :   10d8:   sub    $0x28,%rsp
+         : 25   int n = argc > 1 ? atoi(argv[1]) : 1024;
+    0.00 :   10dc:   cmp    $0x1,%edi
+    0.00 :   10df:   jg     127b <main+0x1bb>
+         : 28   if (n <= 0 || bs <= 0 || n % bs != 0) {
+         : 29   fprintf(stderr, "usage: %s n bs   (n must be a multiple of bs)\n", argv[0]);
+         : 30   return 1;
+         : 31   }
+         :
+         : 33   double *A = malloc((size_t)n * n * sizeof *A);
+    0.00 :   10e5:   mov    %r15d,%r12d
+    0.00 :   10e8:   imul   %r12,%r12
+    0.00 :   10ec:   lea    0x0(,%r12,8),%rdi
+    0.00 :   10f4:   call   1090 <malloc@plt>
+         : 38   double *B = malloc((size_t)n * n * sizeof *B);
+    0.00 :   10f9:   lea    0x0(,%r12,8),%rdi
+         : 40   double *A = malloc((size_t)n * n * sizeof *A);
+    0.00 :   1101:   mov    %rax,%r14
+         : 42   double *B = malloc((size_t)n * n * sizeof *B);
+    0.00 :   1104:   call   1090 <malloc@plt>
+         : 44   double *C = malloc((size_t)n * n * sizeof *C);
+    0.00 :   1109:   lea    0x0(,%r12,8),%rdi
+         : 46   double *B = malloc((size_t)n * n * sizeof *B);
+    0.00 :   1111:   mov    %rax,%r13
+         : 48   double *C = malloc((size_t)n * n * sizeof *C);
+    0.00 :   1114:   call   1090 <malloc@plt>
+         : 50   if (!A || !B || !C) {
+    0.00 :   1119:   test   %r14,%r14
+         : 52   double *C = malloc((size_t)n * n * sizeof *C);
+    0.00 :   111c:   mov    %rax,%r12
+         : 54   if (!A || !B || !C) {
+    0.00 :   111f:   sete   %al
+    0.00 :   1122:   test   %r13,%r13
+    0.00 :   1125:   sete   %dl
+    0.00 :   1128:   or     %dl,%al
+    0.00 :   112a:   jne    12f1 <main+0x231>
+    0.00 :   1130:   test   %r12,%r12
+    0.00 :   1133:   je     12f1 <main+0x231>
+         : 62   fprintf(stderr, "allocation failed\n");
+         : 63   return 1;
+         : 64   }
+         :
+         : 66   fill(A, n, 12345);
+    0.00 :   1139:   mov    $0x3039,%edx
+    0.00 :   113e:   mov    %r15d,%esi
+    0.00 :   1141:   mov    %r14,%rdi
+    0.00 :   1144:   call   1400 <fill>
+         : 71   fill(B, n, 67890);
+    0.00 :   1149:   mov    $0x10932,%edx
+    0.00 :   114e:   mov    %r15d,%esi
+    0.00 :   1151:   mov    %r13,%rdi
+    0.00 :   1154:   call   1400 <fill>
+         : 76   #define NOINLINE __attribute__((noinline))
+         :
+         : 78   static inline double now_sec(void)
+         : 79   {
+         : 80   struct timespec ts;
+         : 81   clock_gettime(CLOCK_MONOTONIC, &ts);
+    0.00 :   1159:   lea    -0x40(%rbp),%rsi
+    0.00 :   115d:   mov    $0x1,%edi
+    0.00 :   1162:   call   1040 <clock_gettime@plt>
+         : 85   return (double)ts.tv_sec + (double)ts.tv_nsec * 1e-9;
+    0.00 :   1167:   pxor   %xmm0,%xmm0
+    0.00 :   116b:   pxor   %xmm1,%xmm1
+         :
+         : 89   double t0 = now_sec();
+         : 90   matmul(C, A, B, n, bs);
+    0.00 :   116f:   mov    %ebx,%r8d
+    0.00 :   1172:   cvtsi2sdq -0x38(%rbp),%xmm0
+    0.00 :   1178:   mov    %r15d,%ecx
+    0.00 :   117b:   mov    %r13,%rdx
+    0.00 :   117e:   mov    %r14,%rsi
+    0.00 :   1181:   mulsd  0xf27(%rip),%xmm0        # 20b0 <_IO_stdin_used+0xb0>
+    0.00 :   1189:   cvtsi2sdq -0x40(%rbp),%xmm1
+    0.00 :   118f:   mov    %r12,%rdi
+    0.00 :   1192:   addsd  %xmm1,%xmm0
+    0.00 :   1196:   movsd  %xmm0,-0x48(%rbp)
+    0.00 :   119b:   call   1490 <matmul>
+         : 102  clock_gettime(CLOCK_MONOTONIC, &ts);
+    0.00 :   11a0:   lea    -0x40(%rbp),%rsi
+    0.00 :   11a4:   mov    $0x1,%edi
+    0.00 :   11a9:   call   1040 <clock_gettime@plt>
+         : 106  return (double)ts.tv_sec + (double)ts.tv_nsec * 1e-9;
+    0.00 :   11ae:   pxor   %xmm1,%xmm1
+         : 108  double t1 = now_sec();
+         :
+         : 110  double sum = 0.0;
+         : 111  for (int i = 0; i < n * n; i++)
+    0.00 :   11b2:   mov    %r15d,%esi
+    0.00 :   11b5:   pxor   %xmm0,%xmm0
+    0.00 :   11b9:   cvtsi2sdq -0x38(%rbp),%xmm1
+    0.00 :   11bf:   imul   %r15d,%esi
+    0.00 :   11c3:   mulsd  0xee5(%rip),%xmm1        # 20b0 <_IO_stdin_used+0xb0>
+    0.00 :   11cb:   cvtsi2sdq -0x40(%rbp),%xmm0
+    0.00 :   11d1:   addsd  %xmm0,%xmm1
+    0.00 :   11d5:   cmp    $0x1,%esi
+    0.00 :   11d8:   je     12e6 <main+0x226>
+    0.00 :   11de:   mov    %esi,%ecx
+    0.00 :   11e0:   mov    %r12,%rax
+         : 123  double sum = 0.0;
+    0.00 :   11e3:   pxor   %xmm2,%xmm2
+    0.00 :   11e7:   shr    $1,%ecx
+    0.00 :   11e9:   mov    %ecx,%edx
+    0.00 :   11eb:   shl    $0x4,%rdx
+    0.00 :   11ef:   add    %r12,%rdx
+    0.00 :   11f2:   nopl   (%rax)
+    0.00 :   11f5:   data16 cs nopw 0x0(%rax,%rax,1)
+         : 131  sum += C[i];
+    0.00 :   1200:   addsd  (%rax),%xmm2
+   45.45 :   1204:   add    $0x10,%rax
+    0.00 :   1208:   addsd  -0x8(%rax),%xmm2
+         : 135  for (int i = 0; i < n * n; i++)
+   54.55 :   120d:   cmp    %rax,%rdx
+    0.00 :   1210:   jne    1200 <main+0x140>
+    0.00 :   1212:   add    %ecx,%ecx
+    0.00 :   1214:   cmp    %esi,%ecx
+    0.00 :   1216:   je     121e <main+0x15e>
+         : 141  sum += C[i];
+    0.00 :   1218:   addsd  (%r12,%rcx,8),%xmm2
+         :
+         : 144  printf("RESULT kernel=matmul impl=seq threads=1 n=%d bs=%d flops=%.0f time=%.6f checksum=%.15g\n",
+         : 145  n, bs, 2.0 * n * n * n, t1 - t0, sum);
+    0.00 :   121e:   pxor   %xmm3,%xmm3
+         : 147  printf("RESULT kernel=matmul impl=seq threads=1 n=%d bs=%d flops=%.0f time=%.6f checksum=%.15g\n",
+    0.00 :   1222:   subsd  -0x48(%rbp),%xmm1
+    0.00 :   1227:   mov    %ebx,%edx
+    0.00 :   1229:   mov    %r15d,%esi
+         : 151  n, bs, 2.0 * n * n * n, t1 - t0, sum);
+    0.00 :   122c:   cvtsi2sd %r15d,%xmm3
+    0.00 :   1231:   movapd %xmm3,%xmm0
+         : 154  printf("RESULT kernel=matmul impl=seq threads=1 n=%d bs=%d flops=%.0f time=%.6f checksum=%.15g\n",
+    0.00 :   1235:   mov    $0x3,%eax
+    0.00 :   123a:   lea    0xdf7(%rip),%rdi        # 2038 <_IO_stdin_used+0x38>
+         : 157  n, bs, 2.0 * n * n * n, t1 - t0, sum);
+    0.00 :   1241:   addsd  %xmm3,%xmm0
+    0.00 :   1245:   mulsd  %xmm3,%xmm0
+         : 160  printf("RESULT kernel=matmul impl=seq threads=1 n=%d bs=%d flops=%.0f time=%.6f checksum=%.15g\n",
+    0.00 :   1249:   mulsd  %xmm3,%xmm0
+    0.00 :   124d:   call   1050 <printf@plt>
+         :
+         : 164  free(A);
+    0.00 :   1252:   mov    %r14,%rdi
+    0.00 :   1255:   call   1030 <free@plt>
+         : 167  free(B);
+    0.00 :   125a:   mov    %r13,%rdi
+    0.00 :   125d:   call   1030 <free@plt>
+         : 170  free(C);
+    0.00 :   1262:   mov    %r12,%rdi
+    0.00 :   1265:   call   1030 <free@plt>
+         : 173  return 0;
+    0.00 :   126a:   xor    %eax,%eax
+         : 175  }
+    0.00 :   126c:   add    $0x28,%rsp
+    0.00 :   1270:   pop    %rbx
+    0.00 :   1271:   pop    %r12
+    0.00 :   1273:   pop    %r13
+    0.00 :   1275:   pop    %r14
+    0.00 :   1277:   pop    %r15
+    0.00 :   1279:   pop    %rbp
+    0.00 :   127a:   ret
+    0.00 :   127b:   mov    %edi,%r12d
+         :
+         : 186  #ifdef __USE_EXTERN_INLINES
+         : 187  __extern_inline int
+         : 188  __NTH (atoi (const char *__nptr))
+         : 189  {
+         : 190  return (int) strtol (__nptr, (char **) NULL, 10);
+    0.00 :   127e:   mov    0x8(%rsi),%rdi
+    0.00 :   1282:   mov    %rsi,%r13
+    0.00 :   1285:   mov    $0xa,%edx
+    0.00 :   128a:   xor    %esi,%esi
+    0.00 :   128c:   call   1080 <strtol@plt>
+    0.00 :   1291:   mov    %rax,%r14
+    0.00 :   1294:   mov    %eax,%r15d
+         : 198  int bs = argc > 2 ? atoi(argv[2]) : 64;
+    0.00 :   1297:   cmp    $0x2,%r12d
+    0.00 :   129b:   je     12af <main+0x1ef>
+    0.00 :   129d:   mov    0x10(%r13),%rdi
+    0.00 :   12a1:   mov    $0xa,%edx
+    0.00 :   12a6:   xor    %esi,%esi
+    0.00 :   12a8:   call   1080 <strtol@plt>
+    0.00 :   12ad:   mov    %eax,%ebx
+         : 206  if (n <= 0 || bs <= 0 || n % bs != 0) {
+    0.00 :   12af:   test   %r14d,%r14d
+    0.00 :   12b2:   jle    12c6 <main+0x206>
+    0.00 :   12b4:   test   %ebx,%ebx
+    0.00 :   12b6:   jle    12c6 <main+0x206>
+    0.00 :   12b8:   mov    %r15d,%eax
+    0.00 :   12bb:   cltd
+    0.00 :   12bc:   idiv   %ebx
+    0.00 :   12be:   test   %edx,%edx
+    0.00 :   12c0:   je     10e5 <main+0x25>
+         : 216  fprintf(stderr, "usage: %s n bs   (n must be a multiple of bs)\n", argv[0]);
+    0.00 :   12c6:   mov    0x0(%r13),%rdx
+    0.00 :   12ca:   mov    0x2d8f(%rip),%rdi        # 4060 <stderr@GLIBC_2.2.5>
+    0.00 :   12d1:   lea    0xd30(%rip),%rsi        # 2008 <_IO_stdin_used+0x8>
+    0.00 :   12d8:   xor    %eax,%eax
+    0.00 :   12da:   call   1070 <fprintf@plt>
+         : 222  return 1;
+    0.00 :   12df:   mov    $0x1,%eax
+    0.00 :   12e4:   jmp    126c <main+0x1ac>
+         : 225  for (int i = 0; i < n * n; i++)
+    0.00 :   12e6:   xor    %ecx,%ecx
+         : 227  double sum = 0.0;
+    0.00 :   12e8:   pxor   %xmm2,%xmm2
+    0.00 :   12ec:   jmp    1218 <main+0x158>
+         : 230  fprintf(stderr, "allocation failed\n");
+    0.00 :   12f1:   mov    0x2d68(%rip),%rcx        # 4060 <stderr@GLIBC_2.2.5>
+    0.00 :   12f8:   mov    $0x12,%edx
+    0.00 :   12fd:   mov    $0x1,%esi
+    0.00 :   1302:   lea    0xd87(%rip),%rdi        # 2090 <_IO_stdin_used+0x90>
+    0.00 :   1309:   call   10a0 <fwrite@plt>
+         : 236  return 1;
+    0.00 :   130e:   jmp    12df <main+0x21f>

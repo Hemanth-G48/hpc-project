@@ -1,0 +1,377 @@
+ Percent |	Source code & Disassembly of map_seq for cpu-clock:u (1446 samples, percent: local period)
+----------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3    Disassembly of section .text:
+         :
+         : 5    0000000000001460 <map_kernel.constprop.0>:
+         : 6    #include <stdio.h>
+         : 7    #include <stdlib.h>
+         : 8    #include "common.h"
+         :
+         : 10   static void NOINLINE map_kernel(double *v, int nv, int len, int reps, double alpha)
+    0.00 :   1460:   push   %rbp
+    0.00 :   1461:   mov    %edx,%r10d
+    0.00 :   1464:   movsd  0xc24(%rip),%xmm1        # 2090 <_IO_stdin_used+0x90>
+    0.00 :   146c:   mov    %r10d,%r9d
+         : 15   {
+         : 16   for (int r = 0; r < reps; r++)
+         : 17   for (int k = 0; k < nv; k++) {
+         : 18   double *vec = v + (size_t)k * len;
+         : 19   for (int j = 0; j < len; j++)
+         : 20   vec[j] *= alpha;
+    0.00 :   146f:   movsd  0xc19(%rip),%xmm2        # 2090 <_IO_stdin_used+0x90>
+         : 22   static void NOINLINE map_kernel(double *v, int nv, int len, int reps, double alpha)
+    0.00 :   1477:   mov    %r10,%r8
+    0.00 :   147a:   lea    0x0(,%r10,8),%r11
+    0.00 :   1482:   shr    $1,%r9d
+    0.00 :   1485:   unpcklpd %xmm1,%xmm1
+    0.00 :   1489:   mov    %rsp,%rbp
+    0.00 :   148c:   push   %r15
+    0.00 :   148e:   mov    %ecx,%r15d
+    0.00 :   1491:   push   %r14
+         : 31   for (int r = 0; r < reps; r++)
+    0.00 :   1493:   xor    %r14d,%r14d
+         : 33   static void NOINLINE map_kernel(double *v, int nv, int len, int reps, double alpha)
+    0.00 :   1496:   push   %r13
+    0.00 :   1498:   mov    %r9d,%r13d
+    0.00 :   149b:   add    %r9d,%r9d
+    0.00 :   149e:   push   %r12
+    0.00 :   14a0:   shl    $0x4,%r13
+    0.00 :   14a4:   mov    %rdi,%r12
+    0.00 :   14a7:   push   %rbx
+    0.00 :   14a8:   mov    %esi,%ebx
+    0.00 :   14aa:   nopw   0x0(%rax,%rax,1)
+         : 43   for (int k = 0; k < nv; k++) {
+    0.00 :   14b0:   mov    %r12,%rcx
+         : 45   static void NOINLINE map_kernel(double *v, int nv, int len, int reps, double alpha)
+    0.00 :   14b3:   xor    %edi,%edi
+         : 47   for (int k = 0; k < nv; k++) {
+    0.00 :   14b5:   xor    %esi,%esi
+    0.00 :   14b7:   nopw   0x0(%rax,%rax,1)
+         : 50   for (int j = 0; j < len; j++)
+    0.00 :   14c0:   cmp    $0x1,%r8d
+    0.00 :   14c4:   je     1558 <map_kernel.constprop.0+0xf8>
+    0.00 :   14ca:   lea    0x0(%r13,%rcx,1),%rdx
+         : 54   for (int k = 0; k < nv; k++) {
+    0.00 :   14cf:   mov    %rcx,%rax
+    0.00 :   14d2:   nopl   (%rax)
+    0.00 :   14d5:   data16 cs nopw 0x0(%rax,%rax,1)
+         : 58   vec[j] *= alpha;
+    3.25 :   14e0:   movupd (%rax),%xmm0
+   76.90 :   14e4:   add    $0x10,%rax
+    3.46 :   14e8:   mulpd  %xmm1,%xmm0
+   10.93 :   14ec:   movups %xmm0,-0x10(%rax)
+         : 63   for (int j = 0; j < len; j++)
+    5.46 :   14f0:   cmp    %rax,%rdx
+    0.00 :   14f3:   jne    14e0 <map_kernel.constprop.0+0x80>
+    0.00 :   14f5:   cmp    %r8d,%r9d
+    0.00 :   14f8:   je     1538 <map_kernel.constprop.0+0xd8>
+    0.00 :   14fa:   mov    %r9d,%eax
+         : 69   vec[j] *= alpha;
+    0.00 :   14fd:   add    %rdi,%rax
+         : 71   for (int k = 0; k < nv; k++) {
+    0.00 :   1500:   add    $0x1,%esi
+    0.00 :   1503:   add    %r10,%rdi
+    0.00 :   1506:   add    %r11,%rcx
+         : 75   vec[j] *= alpha;
+    0.00 :   1509:   movsd  (%r12,%rax,8),%xmm0
+    0.00 :   150f:   mulsd  %xmm2,%xmm0
+    0.00 :   1513:   movsd  %xmm0,(%r12,%rax,8)
+         : 79   for (int k = 0; k < nv; k++) {
+    0.00 :   1519:   cmp    %ebx,%esi
+    0.00 :   151b:   jne    14c0 <map_kernel.constprop.0+0x60>
+         : 82   for (int r = 0; r < reps; r++)
+    0.00 :   151d:   add    $0x1,%r14d
+    0.00 :   1521:   cmp    %r15d,%r14d
+    0.00 :   1524:   jne    14b0 <map_kernel.constprop.0+0x50>
+         : 86   }
+         : 87   }
+    0.00 :   1526:   pop    %rbx
+    0.00 :   1527:   pop    %r12
+    0.00 :   1529:   pop    %r13
+    0.00 :   152b:   pop    %r14
+    0.00 :   152d:   pop    %r15
+    0.00 :   152f:   pop    %rbp
+    0.00 :   1530:   ret
+    0.00 :   1531:   nopl   0x0(%rax)
+         : 96   for (int k = 0; k < nv; k++) {
+    0.00 :   1538:   add    $0x1,%esi
+    0.00 :   153b:   add    %r10,%rdi
+    0.00 :   153e:   add    %r11,%rcx
+    0.00 :   1541:   cmp    %esi,%ebx
+    0.00 :   1543:   jne    14ca <map_kernel.constprop.0+0x6a>
+         : 102  for (int r = 0; r < reps; r++)
+    0.00 :   1545:   add    $0x1,%r14d
+    0.00 :   1549:   cmp    %r15d,%r14d
+    0.00 :   154c:   jne    14b0 <map_kernel.constprop.0+0x50>
+    0.00 :   1552:   jmp    1526 <map_kernel.constprop.0+0xc6>
+    0.00 :   1554:   nopl   0x0(%rax)
+         : 108  for (int j = 0; j < len; j++)
+    0.00 :   1558:   xor    %eax,%eax
+    0.00 :   155a:   jmp    14fd <map_kernel.constprop.0+0x9d>
+ Percent |	Source code & Disassembly of map_seq for cpu-clock:u (60 samples, percent: local period)
+--------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3    Disassembly of section .text:
+         :
+         : 5    00000000000010c0 <main>:
+         : 6    vec[j] *= alpha;
+         : 7    }
+         : 8    }
+         :
+         : 10   int main(int argc, char **argv)
+         : 11   {
+    0.00 :   10c0:   push   %rbp
+    0.00 :   10c1:   mov    %rsp,%rbp
+    0.00 :   10c4:   push   %r15
+    0.00 :   10c6:   push   %r14
+    0.00 :   10c8:   push   %r13
+    0.00 :   10ca:   push   %r12
+         : 18   int nv = argc > 1 ? atoi(argv[1]) : 48;
+    0.00 :   10cc:   mov    $0x30,%r12d
+         : 20   {
+    0.00 :   10d2:   push   %rbx
+    0.00 :   10d3:   sub    $0x28,%rsp
+         : 23   int nv = argc > 1 ? atoi(argv[1]) : 48;
+    0.00 :   10d7:   cmp    $0x1,%edi
+    0.00 :   10da:   jg     128e <main+0x1ce>
+         : 26   int len = argc > 2 ? atoi(argv[2]) : 131072;
+    0.00 :   10e0:   mov    $0x20000,%r13d
+         : 28   int reps = argc > 3 ? atoi(argv[3]) : 100;
+    0.00 :   10e6:   mov    $0x64,%ebx
+         : 30   if (nv <= 0 || len <= 0 || reps <= 0) {
+         : 31   fprintf(stderr, "usage: %s nv len reps\n", argv[0]);
+         : 32   return 1;
+         : 33   }
+         :
+         : 35   size_t total = (size_t)nv * (size_t)len;
+    0.00 :   10eb:   mov    %r13d,%eax
+    0.00 :   10ee:   mov    %r12d,%r14d
+    0.00 :   10f1:   imul   %rax,%r14
+         : 39   double *v = malloc(total * sizeof *v);
+    0.00 :   10f5:   lea    0x0(,%r14,8),%rsi
+    0.00 :   10fd:   mov    %rsi,%rdi
+    0.00 :   1100:   mov    %rsi,-0x48(%rbp)
+    0.00 :   1104:   call   1080 <malloc@plt>
+         : 44   if (!v) {
+    0.00 :   1109:   mov    -0x48(%rbp),%rsi
+    0.00 :   110d:   test   %rax,%rax
+         : 47   double *v = malloc(total * sizeof *v);
+    0.00 :   1110:   mov    %rax,%r15
+         : 49   if (!v) {
+    0.00 :   1113:   je     1332 <main+0x272>
+    0.00 :   1119:   movsd  0xf77(%rip),%xmm1        # 2098 <_IO_stdin_used+0x98>
+    0.00 :   1121:   mov    %rax,%r8
+    0.00 :   1124:   add    %rax,%rsi
+    0.00 :   1127:   mov    %rax,%rcx
+         : 55   fprintf(stderr, "allocation failed\n");
+         : 56   return 1;
+         : 57   }
+         :
+         : 59   uint64_t s = 0x243f6a8885a308d3ULL;
+    0.00 :   112a:   movabs $0x243f6a8885a308d3,%rdx
+    0.00 :   1134:   nop
+    0.00 :   1135:   data16 cs nopw 0x0(%rax,%rax,1)
+         : 63   }
+         :
+         : 65   static inline uint64_t xorshift64(uint64_t *s)
+         : 66   {
+         : 67   uint64_t x = *s;
+         : 68   x ^= x << 13;
+   15.00 :   1140:   mov    %rdx,%rax
+         : 70   return x;
+         : 71   }
+         :
+         : 73   static inline double frand01(uint64_t *s)
+         : 74   {
+         : 75   return (double)(xorshift64(s) >> 11) * (1.0 / 9007199254740992.0);
+    0.00 :   1143:   pxor   %xmm0,%xmm0
+         : 77   for (size_t i = 0; i < total; i++)
+    0.00 :   1147:   add    $0x8,%rcx
+         : 79   x ^= x << 13;
+    0.00 :   114b:   shl    $0xd,%rax
+   10.00 :   114f:   xor    %rdx,%rax
+         : 82   x ^= x >> 7;
+    0.00 :   1152:   mov    %rax,%rdx
+    0.00 :   1155:   shr    $0x7,%rdx
+    0.00 :   1159:   xor    %rdx,%rax
+         : 86   x ^= x << 17;
+    3.33 :   115c:   mov    %rax,%rdx
+    0.00 :   115f:   shl    $0x11,%rdx
+    0.00 :   1163:   xor    %rax,%rdx
+         : 90   return (double)(xorshift64(s) >> 11) * (1.0 / 9007199254740992.0);
+    0.00 :   1166:   mov    %rdx,%rax
+   16.67 :   1169:   shr    $0xb,%rax
+    0.00 :   116d:   cvtsi2sd %rax,%xmm0
+    1.67 :   1172:   mulsd  %xmm1,%xmm0
+         : 95   v[i] = frand01(&s);
+   18.33 :   1176:   movsd  %xmm0,-0x8(%rcx)
+         : 97   for (size_t i = 0; i < total; i++)
+    8.33 :   117b:   cmp    %rcx,%rsi
+    0.00 :   117e:   jne    1140 <main+0x80>
+         : 100  clock_gettime(CLOCK_MONOTONIC, &ts);
+    0.00 :   1180:   lea    -0x40(%rbp),%rsi
+    0.00 :   1184:   mov    $0x1,%edi
+    0.00 :   1189:   mov    %r8,-0x50(%rbp)
+    0.00 :   118d:   call   1040 <clock_gettime@plt>
+         : 105  return (double)ts.tv_sec + (double)ts.tv_nsec * 1e-9;
+    0.00 :   1192:   pxor   %xmm0,%xmm0
+    0.00 :   1196:   pxor   %xmm1,%xmm1
+         :
+         : 109  double t0 = now_sec();
+         : 110  map_kernel(v, nv, len, reps, alpha);
+    0.00 :   119a:   mov    %ebx,%ecx
+    0.00 :   119c:   cvtsi2sdq -0x38(%rbp),%xmm0
+    0.00 :   11a2:   cvtsi2sdq -0x40(%rbp),%xmm1
+    0.00 :   11a8:   mov    %r13d,%edx
+    0.00 :   11ab:   mov    %r12d,%esi
+    0.00 :   11ae:   mulsd  0xeea(%rip),%xmm0        # 20a0 <_IO_stdin_used+0xa0>
+    0.00 :   11b6:   mov    %r15,%rdi
+    0.00 :   11b9:   addsd  %xmm1,%xmm0
+    0.00 :   11bd:   movsd  %xmm0,-0x48(%rbp)
+    0.00 :   11c2:   call   1460 <map_kernel.constprop.0>
+         : 121  clock_gettime(CLOCK_MONOTONIC, &ts);
+    0.00 :   11c7:   lea    -0x40(%rbp),%rsi
+    0.00 :   11cb:   mov    $0x1,%edi
+    0.00 :   11d0:   call   1040 <clock_gettime@plt>
+         : 125  return (double)ts.tv_sec + (double)ts.tv_nsec * 1e-9;
+    0.00 :   11d5:   pxor   %xmm1,%xmm1
+    0.00 :   11d9:   cvtsi2sdq -0x38(%rbp),%xmm1
+    0.00 :   11df:   pxor   %xmm0,%xmm0
+    0.00 :   11e3:   mulsd  0xeb5(%rip),%xmm1        # 20a0 <_IO_stdin_used+0xa0>
+    0.00 :   11eb:   cvtsi2sdq -0x40(%rbp),%xmm0
+    0.00 :   11f1:   addsd  %xmm0,%xmm1
+         : 132  double t1 = now_sec();
+         :
+         : 134  double sum = 0.0;
+         : 135  for (size_t i = 0; i < total; i++)
+    0.00 :   11f5:   cmp    $0x1,%r14
+    0.00 :   11f9:   je     1327 <main+0x267>
+    0.00 :   11ff:   mov    %r14,%rdx
+         : 139  double sum = 0.0;
+    0.00 :   1202:   mov    -0x50(%rbp),%r8
+    0.00 :   1206:   pxor   %xmm2,%xmm2
+    0.00 :   120a:   shr    $1,%rdx
+    0.00 :   120d:   mov    %rdx,%rax
+    0.00 :   1210:   shl    $0x4,%rax
+    0.00 :   1214:   add    %r15,%rax
+    0.00 :   1217:   nopw   0x0(%rax,%rax,1)
+         : 147  sum += v[i];
+    0.00 :   1220:   addsd  (%r8),%xmm2
+   15.00 :   1225:   add    $0x10,%r8
+    0.00 :   1229:   addsd  -0x8(%r8),%xmm2
+         : 151  for (size_t i = 0; i < total; i++)
+   11.67 :   122f:   cmp    %r8,%rax
+    0.00 :   1232:   jne    1220 <main+0x160>
+    0.00 :   1234:   add    %rdx,%rdx
+    0.00 :   1237:   cmp    %rdx,%r14
+    0.00 :   123a:   je     1242 <main+0x182>
+         : 157  sum += v[i];
+    0.00 :   123c:   addsd  (%r15,%rdx,8),%xmm2
+         :
+         : 160  printf("RESULT kernel=map impl=seq threads=1 nv=%d len=%d reps=%d flops=%.0f time=%.6f checksum=%.15g\n",
+         : 161  nv, len, reps, (double)total * reps, t1 - t0, sum);
+    0.00 :   1242:   pxor   %xmm0,%xmm0
+         : 163  printf("RESULT kernel=map impl=seq threads=1 nv=%d len=%d reps=%d flops=%.0f time=%.6f checksum=%.15g\n",
+    0.00 :   1246:   pxor   %xmm3,%xmm3
+    0.00 :   124a:   subsd  -0x48(%rbp),%xmm1
+    0.00 :   124f:   mov    %ebx,%ecx
+    0.00 :   1251:   cvtsi2sd %ebx,%xmm3
+         : 168  nv, len, reps, (double)total * reps, t1 - t0, sum);
+    0.00 :   1255:   cvtsi2sd %r14,%xmm0
+         : 170  printf("RESULT kernel=map impl=seq threads=1 nv=%d len=%d reps=%d flops=%.0f time=%.6f checksum=%.15g\n",
+    0.00 :   125a:   mov    %r13d,%edx
+    0.00 :   125d:   mov    %r12d,%esi
+    0.00 :   1260:   mulsd  %xmm3,%xmm0
+    0.00 :   1264:   lea    0xdc5(%rip),%rdi        # 2030 <_IO_stdin_used+0x30>
+    0.00 :   126b:   mov    $0x3,%eax
+    0.00 :   1270:   call   1050 <printf@plt>
+         :
+         : 178  free(v);
+    0.00 :   1275:   mov    %r15,%rdi
+    0.00 :   1278:   call   1030 <free@plt>
+         : 181  return 0;
+    0.00 :   127d:   xor    %eax,%eax
+         : 183  }
+    0.00 :   127f:   add    $0x28,%rsp
+    0.00 :   1283:   pop    %rbx
+    0.00 :   1284:   pop    %r12
+    0.00 :   1286:   pop    %r13
+    0.00 :   1288:   pop    %r14
+    0.00 :   128a:   pop    %r15
+    0.00 :   128c:   pop    %rbp
+    0.00 :   128d:   ret
+    0.00 :   128e:   mov    %edi,%ebx
+         :
+         : 194  #ifdef __USE_EXTERN_INLINES
+         : 195  __extern_inline int
+         : 196  __NTH (atoi (const char *__nptr))
+         : 197  {
+         : 198  return (int) strtol (__nptr, (char **) NULL, 10);
+    0.00 :   1290:   mov    0x8(%rsi),%rdi
+    0.00 :   1294:   mov    %rsi,%r15
+    0.00 :   1297:   mov    $0xa,%edx
+    0.00 :   129c:   xor    %esi,%esi
+    0.00 :   129e:   call   1070 <strtol@plt>
+    0.00 :   12a3:   mov    %rax,%r14
+    0.00 :   12a6:   mov    %eax,%r12d
+         : 206  int len = argc > 2 ? atoi(argv[2]) : 131072;
+    0.00 :   12a9:   cmp    $0x2,%ebx
+    0.00 :   12ac:   jne    12d5 <main+0x215>
+         : 209  if (nv <= 0 || len <= 0 || reps <= 0) {
+    0.00 :   12ae:   test   %eax,%eax
+    0.00 :   12b0:   jg     10e0 <main+0x20>
+         : 212  fprintf(stderr, "usage: %s nv len reps\n", argv[0]);
+    0.00 :   12b6:   mov    (%r15),%rdx
+    0.00 :   12b9:   mov    0x2da0(%rip),%rdi        # 4060 <stderr@GLIBC_2.2.5>
+    0.00 :   12c0:   lea    0xd3d(%rip),%rsi        # 2004 <_IO_stdin_used+0x4>
+    0.00 :   12c7:   xor    %eax,%eax
+    0.00 :   12c9:   call   1060 <fprintf@plt>
+         : 218  return 1;
+    0.00 :   12ce:   mov    $0x1,%eax
+    0.00 :   12d3:   jmp    127f <main+0x1bf>
+    0.00 :   12d5:   mov    0x10(%r15),%rdi
+    0.00 :   12d9:   xor    %esi,%esi
+    0.00 :   12db:   mov    $0xa,%edx
+    0.00 :   12e0:   call   1070 <strtol@plt>
+         : 225  if (nv <= 0 || len <= 0 || reps <= 0) {
+    0.00 :   12e5:   test   %r14d,%r14d
+    0.00 :   12e8:   setle  %r14b
+    0.00 :   12ec:   test   %eax,%eax
+    0.00 :   12ee:   mov    %eax,%r13d
+    0.00 :   12f1:   setle  %al
+    0.00 :   12f4:   or     %eax,%r14d
+         : 232  int reps = argc > 3 ? atoi(argv[3]) : 100;
+    0.00 :   12f7:   cmp    $0x3,%ebx
+    0.00 :   12fa:   je     131c <main+0x25c>
+    0.00 :   12fc:   mov    0x18(%r15),%rdi
+    0.00 :   1300:   mov    $0xa,%edx
+    0.00 :   1305:   xor    %esi,%esi
+    0.00 :   1307:   call   1070 <strtol@plt>
+    0.00 :   130c:   mov    %eax,%ebx
+         : 240  if (nv <= 0 || len <= 0 || reps <= 0) {
+    0.00 :   130e:   test   %eax,%eax
+    0.00 :   1310:   jle    12b6 <main+0x1f6>
+    0.00 :   1312:   test   %r14b,%r14b
+    0.00 :   1315:   jne    12b6 <main+0x1f6>
+    0.00 :   1317:   jmp    10eb <main+0x2b>
+    0.00 :   131c:   test   %r14b,%r14b
+    0.00 :   131f:   je     10e6 <main+0x26>
+    0.00 :   1325:   jmp    12b6 <main+0x1f6>
+         : 249  for (size_t i = 0; i < total; i++)
+    0.00 :   1327:   xor    %edx,%edx
+         : 251  double sum = 0.0;
+    0.00 :   1329:   pxor   %xmm2,%xmm2
+    0.00 :   132d:   jmp    123c <main+0x17c>
+         : 254  fprintf(stderr, "allocation failed\n");
+    0.00 :   1332:   mov    0x2d27(%rip),%rcx        # 4060 <stderr@GLIBC_2.2.5>
+    0.00 :   1339:   mov    $0x12,%edx
+    0.00 :   133e:   mov    $0x1,%esi
+    0.00 :   1343:   lea    0xcd1(%rip),%rdi        # 201b <_IO_stdin_used+0x1b>
+    0.00 :   134a:   call   1090 <fwrite@plt>
+         : 260  return 1;
+    0.00 :   134f:   jmp    12ce <main+0x20e>

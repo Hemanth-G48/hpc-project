@@ -1,0 +1,40 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 1K of event 'cpu-clock:u'
+# Event count (approx.): 398250000
+#
+# Overhead  Command        Shared Object  Symbol           
+# ........  .............  .............  .................
+#
+    71.69%  reduction_seq  reduction_seq  [.] reduce_kernel
+            |
+            ---merge_runs (inlined)
+               reduce_kernel
+               now_sec (inlined)
+               main
+               0x7f3d9862a3fe
+               0x7ffeb1462aaa
+               0x5f6e6f6974637564
+
+    28.31%  reduction_seq  reduction_seq  [.] main
+            |          
+            |--25.42%--main
+            |          0x7f3d9862a3fe
+            |          0x7ffeb1462aaa
+            |          0x5f6e6f6974637564
+            |          
+             --2.57%--xorshift64 (inlined)
+                       frand01 (inlined)
+                       main
+                       0x7f3d9862a3fe
+                       0x7ffeb1462aaa
+                       0x5f6e6f6974637564
+
+
+
+#
+# (Tip: Add -I to perf record to sample register values, which will be visible in perf report sample context.)
+#

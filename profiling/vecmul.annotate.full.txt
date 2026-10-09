@@ -1,0 +1,544 @@
+ Percent |	Source code & Disassembly of vecmul_seq for cpu-clock:u (926 samples, percent: local period)
+------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3    Disassembly of section .text:
+         :
+         : 5    00000000000015c0 <vecmul_kernel>:
+         : 6    #include <stdlib.h>
+         : 7    #include "common.h"
+         :
+         : 9    static void NOINLINE vecmul_kernel(const int *x, const int *y, int *z,
+         : 10   int nv, int len, int reps)
+         : 11   {
+    0.00 :   15c0:   push   %rbp
+    0.00 :   15c1:   mov    %r8d,%eax
+    0.00 :   15c4:   mov    %rdi,%r11
+         : 15   for (int r = 0; r < reps; r++)
+    0.00 :   15c7:   xor    %r8d,%r8d
+         : 17   {
+    0.00 :   15ca:   mov    %rsp,%rbp
+    0.00 :   15cd:   push   %r15
+    0.00 :   15cf:   mov    %rsi,%r15
+    0.00 :   15d2:   push   %r14
+    0.00 :   15d4:   mov    %rax,%r14
+    0.00 :   15d7:   push   %r13
+    0.00 :   15d9:   lea    -0x1(%rax),%r13d
+    0.00 :   15dd:   push   %r12
+    0.00 :   15df:   mov    %r9d,%r12d
+    0.00 :   15e2:   lea    0x0(,%rax,4),%r9
+    0.00 :   15ea:   push   %rbx
+    0.00 :   15eb:   mov    %rdx,%rbx
+         : 30   for (int k = 0; k < nv; k++) {
+         : 31   const int *xk = x + (size_t)k * len;
+    0.00 :   15ee:   mov    %rax,-0x48(%rbp)
+    0.00 :   15f2:   shr    $0x2,%eax
+    0.00 :   15f5:   mov    %eax,%esi
+    0.00 :   15f7:   shl    $0x2,%eax
+         : 36   {
+    0.00 :   15fa:   mov    %ecx,-0x38(%rbp)
+         : 38   const int *yk = y + (size_t)k * len;
+         : 39   int *zk = z + (size_t)k * len;
+         : 40   for (int j = 0; j < len; j++)
+    0.00 :   15fd:   lea    0x1(%rax),%edi
+    0.00 :   1600:   mov    %eax,-0x34(%rbp)
+    0.00 :   1603:   add    $0x2,%eax
+    0.00 :   1606:   shl    $0x4,%rsi
+    0.00 :   160a:   mov    %edi,-0x50(%rbp)
+         : 46   zk[j] = xk[j] * yk[j];
+    0.00 :   160d:   mov    %rdi,-0x60(%rbp)
+    0.00 :   1611:   mov    %r13d,-0x64(%rbp)
+    0.00 :   1615:   mov    %r12d,-0x6c(%rbp)
+         : 50   for (int j = 0; j < len; j++)
+    0.00 :   1619:   mov    %eax,-0x4c(%rbp)
+    0.00 :   161c:   mov    %r14d,%eax
+    0.00 :   161f:   mov    %r15,%r14
+    0.00 :   1622:   mov    %eax,%r15d
+    0.00 :   1625:   data16 cs nopw 0x0(%rax,%rax,1)
+         : 56   for (int k = 0; k < nv; k++) {
+    0.00 :   1630:   mov    %r8d,-0x68(%rbp)
+    0.00 :   1634:   mov    %r11,%rdx
+    0.00 :   1637:   mov    %r14,%rax
+         : 60   {
+    0.00 :   163a:   xor    %edi,%edi
+         : 62   for (int k = 0; k < nv; k++) {
+    0.00 :   163c:   xor    %r10d,%r10d
+         : 64   zk[j] = xk[j] * yk[j];
+    0.00 :   163f:   mov    -0x34(%rbp),%ecx
+    0.00 :   1642:   mov    %rcx,-0x40(%rbp)
+    0.00 :   1646:   mov    -0x4c(%rbp),%ecx
+    0.00 :   1649:   mov    %rcx,-0x58(%rbp)
+    0.00 :   164d:   cmpl   $0x2,-0x64(%rbp)
+    0.00 :   1651:   jbe    17b0 <vecmul_kernel+0x1f0>
+    0.00 :   1657:   lea    0x0(,%rdi,4),%r8
+    0.00 :   165f:   lea    0x4(%rax),%r13
+    0.00 :   1663:   lea    (%rbx,%r8,1),%rcx
+    0.00 :   1667:   mov    %rcx,%r12
+    0.00 :   166a:   sub    %r13,%r12
+    0.00 :   166d:   cmp    $0x8,%r12
+    0.00 :   1671:   jbe    17b8 <vecmul_kernel+0x1f8>
+    0.00 :   1677:   lea    0x4(%rdx),%r13
+    0.00 :   167b:   mov    %rcx,%r12
+    0.00 :   167e:   sub    %r13,%r12
+    0.00 :   1681:   cmp    $0x8,%r12
+    0.00 :   1685:   jbe    17b8 <vecmul_kernel+0x1f8>
+         : 83   for (int k = 0; k < nv; k++) {
+    0.00 :   168b:   xor    %r8d,%r8d
+    0.00 :   168e:   nopw   0x0(%rax,%rax,1)
+    0.00 :   1694:   data16 cs nopw 0x0(%rax,%rax,1)
+    0.00 :   169f:   data16 cs nopw 0x0(%rax,%rax,1)
+    0.00 :   16aa:   data16 cs nopw 0x0(%rax,%rax,1)
+    0.00 :   16b5:   data16 cs nopw 0x0(%rax,%rax,1)
+         : 90   zk[j] = xk[j] * yk[j];
+    3.56 :   16c0:   movdqu (%rdx,%r8,1),%xmm0
+   19.98 :   16c6:   movdqu (%rax,%r8,1),%xmm2
+   18.03 :   16cc:   movdqa %xmm0,%xmm1
+    2.48 :   16d0:   psrlq  $0x20,%xmm0
+    4.54 :   16d5:   pmuludq %xmm2,%xmm1
+   12.74 :   16d9:   psrlq  $0x20,%xmm2
+    3.78 :   16de:   pmuludq %xmm2,%xmm0
+    2.05 :   16e2:   pshufd $0x8,%xmm1,%xmm1
+    6.91 :   16e7:   pshufd $0x8,%xmm0,%xmm0
+    5.40 :   16ec:   punpckldq %xmm0,%xmm1
+   13.07 :   16f0:   movups %xmm1,(%rcx,%r8,1)
+         : 102  for (int j = 0; j < len; j++)
+    5.72 :   16f5:   add    $0x10,%r8
+    1.73 :   16f9:   cmp    %rsi,%r8
+    0.00 :   16fc:   jne    16c0 <vecmul_kernel+0x100>
+    0.00 :   16fe:   cmp    -0x34(%rbp),%r15d
+    0.00 :   1702:   je     1768 <vecmul_kernel+0x1a8>
+         : 108  zk[j] = xk[j] * yk[j];
+    0.00 :   1704:   mov    -0x40(%rbp),%rcx
+    0.00 :   1708:   add    %rdi,%rcx
+    0.00 :   170b:   mov    (%r11,%rcx,4),%r8d
+    0.00 :   170f:   imul   (%r14,%rcx,4),%r8d
+    0.00 :   1714:   mov    %r8d,(%rbx,%rcx,4)
+         : 114  for (int j = 0; j < len; j++)
+    0.00 :   1718:   cmp    -0x50(%rbp),%r15d
+    0.00 :   171c:   jle    1790 <vecmul_kernel+0x1d0>
+         : 117  zk[j] = xk[j] * yk[j];
+    0.00 :   171e:   mov    -0x60(%rbp),%rcx
+    0.00 :   1722:   add    %rdi,%rcx
+    0.00 :   1725:   mov    (%r11,%rcx,4),%r8d
+    0.00 :   1729:   imul   (%r14,%rcx,4),%r8d
+    0.00 :   172e:   mov    %r8d,(%rbx,%rcx,4)
+         : 123  for (int j = 0; j < len; j++)
+    0.00 :   1732:   cmp    -0x4c(%rbp),%r15d
+    0.00 :   1736:   jle    1768 <vecmul_kernel+0x1a8>
+         : 126  zk[j] = xk[j] * yk[j];
+    0.00 :   1738:   mov    -0x58(%rbp),%rcx
+         : 128  for (int k = 0; k < nv; k++) {
+    0.00 :   173c:   add    $0x1,%r10d
+    0.00 :   1740:   add    %rdi,%rcx
+         : 131  zk[j] = xk[j] * yk[j];
+    0.00 :   1743:   mov    (%r11,%rcx,4),%r8d
+    0.00 :   1747:   imul   (%r14,%rcx,4),%r8d
+    0.00 :   174c:   mov    %r8d,(%rbx,%rcx,4)
+         : 135  for (int k = 0; k < nv; k++) {
+    0.00 :   1750:   cmp    %r10d,-0x38(%rbp)
+    0.00 :   1754:   je     1772 <vecmul_kernel+0x1b2>
+    0.00 :   1756:   add    -0x48(%rbp),%rdi
+    0.00 :   175a:   add    %r9,%rdx
+    0.00 :   175d:   add    %r9,%rax
+    0.00 :   1760:   jmp    1657 <vecmul_kernel+0x97>
+    0.00 :   1765:   nopl   (%rax)
+    0.00 :   1768:   add    $0x1,%r10d
+    0.00 :   176c:   cmp    %r10d,-0x38(%rbp)
+    0.00 :   1770:   jne    1756 <vecmul_kernel+0x196>
+    0.00 :   1772:   mov    -0x68(%rbp),%r8d
+         : 147  for (int r = 0; r < reps; r++)
+    0.00 :   1776:   add    $0x1,%r8d
+    0.00 :   177a:   cmp    %r8d,-0x6c(%rbp)
+    0.00 :   177e:   jne    1630 <vecmul_kernel+0x70>
+         : 151  }
+         : 152  }
+    0.00 :   1784:   pop    %rbx
+    0.00 :   1785:   pop    %r12
+    0.00 :   1787:   pop    %r13
+    0.00 :   1789:   pop    %r14
+    0.00 :   178b:   pop    %r15
+    0.00 :   178d:   pop    %rbp
+    0.00 :   178e:   ret
+    0.00 :   178f:   nop
+         : 161  for (int k = 0; k < nv; k++) {
+    0.00 :   1790:   add    $0x1,%r10d
+    0.00 :   1794:   cmp    -0x38(%rbp),%r10d
+    0.00 :   1798:   jne    1756 <vecmul_kernel+0x196>
+    0.00 :   179a:   mov    -0x68(%rbp),%r8d
+         : 166  for (int r = 0; r < reps; r++)
+    0.00 :   179e:   add    $0x1,%r8d
+    0.00 :   17a2:   cmp    %r8d,-0x6c(%rbp)
+    0.00 :   17a6:   jne    1630 <vecmul_kernel+0x70>
+    0.00 :   17ac:   jmp    1784 <vecmul_kernel+0x1c4>
+    0.00 :   17ae:   xchg   %ax,%ax
+    0.00 :   17b0:   lea    0x0(,%rdi,4),%r8
+    0.00 :   17b8:   add    %rbx,%r8
+         : 174  for (int k = 0; k < nv; k++) {
+    0.00 :   17bb:   xor    %ecx,%ecx
+    0.00 :   17bd:   nopl   (%rax)
+         : 177  zk[j] = xk[j] * yk[j];
+    0.00 :   17c0:   mov    (%rdx,%rcx,1),%r12d
+    0.00 :   17c4:   imul   (%rax,%rcx,1),%r12d
+    0.00 :   17c9:   mov    %r12d,(%r8,%rcx,1)
+         : 181  for (int j = 0; j < len; j++)
+    0.00 :   17cd:   add    $0x4,%rcx
+    0.00 :   17d1:   cmp    %r9,%rcx
+    0.00 :   17d4:   jne    17c0 <vecmul_kernel+0x200>
+         : 185  for (int k = 0; k < nv; k++) {
+    0.00 :   17d6:   add    $0x1,%r10d
+    0.00 :   17da:   add    -0x48(%rbp),%rdi
+    0.00 :   17de:   add    %r9,%rdx
+    0.00 :   17e1:   add    %r9,%rax
+    0.00 :   17e4:   cmp    %r10d,-0x38(%rbp)
+    0.00 :   17e8:   jne    163f <vecmul_kernel+0x7f>
+    0.00 :   17ee:   mov    -0x68(%rbp),%r8d
+         : 193  for (int r = 0; r < reps; r++)
+    0.00 :   17f2:   add    $0x1,%r8d
+    0.00 :   17f6:   cmp    %r8d,-0x6c(%rbp)
+    0.00 :   17fa:   jne    1630 <vecmul_kernel+0x70>
+    0.00 :   1800:   jmp    1784 <vecmul_kernel+0x1c4>
+ Percent |	Source code & Disassembly of vecmul_seq for cpu-clock:u (16 samples, percent: local period)
+-----------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3    Disassembly of section .text:
+         :
+         : 5    00000000000010c0 <main>:
+         : 6    zk[j] = xk[j] * yk[j];
+         : 7    }
+         : 8    }
+         :
+         : 10   int main(int argc, char **argv)
+         : 11   {
+    0.00 :   10c0:   push   %rbp
+    0.00 :   10c1:   mov    %rsp,%rbp
+    0.00 :   10c4:   sub    $0x50,%rsp
+    0.00 :   10c8:   mov    %rbx,-0x28(%rbp)
+    0.00 :   10cc:   mov    %r12,-0x20(%rbp)
+    0.00 :   10d0:   mov    %r13,-0x18(%rbp)
+         : 18   int nv = argc > 1 ? atoi(argv[1]) : 128;
+    0.00 :   10d4:   cmp    $0x1,%edi
+    0.00 :   10d7:   jg     1397 <main+0x2d7>
+    0.00 :   10dd:   mov    %r14,-0x10(%rbp)
+         : 22   int len = argc > 2 ? atoi(argv[2]) : 7168;
+         : 23   int reps = argc > 3 ? atoi(argv[3]) : 1000;
+    0.00 :   10e1:   mov    $0x3e8,%r12d
+    0.00 :   10e7:   mov    %r15,-0x8(%rbp)
+         : 26   int nv = argc > 1 ? atoi(argv[1]) : 128;
+    0.00 :   10eb:   movl   $0x80,-0x44(%rbp)
+         : 28   int len = argc > 2 ? atoi(argv[2]) : 7168;
+    0.00 :   10f2:   movl   $0x1c00,-0x48(%rbp)
+         : 30   if (nv <= 0 || len <= 0 || reps <= 0) {
+         : 31   fprintf(stderr, "usage: %s nv len reps\n", argv[0]);
+         : 32   return 1;
+         : 33   }
+         :
+         : 35   size_t total = (size_t)nv * (size_t)len;
+    0.00 :   10f9:   mov    -0x44(%rbp),%ebx
+    0.00 :   10fc:   mov    -0x48(%rbp),%eax
+    0.00 :   10ff:   imul   %rax,%rbx
+         : 39   int *x = malloc(total * sizeof *x);
+    0.00 :   1103:   lea    0x0(,%rbx,4),%rdi
+    0.00 :   110b:   call   1080 <malloc@plt>
+         : 42   int *y = malloc(total * sizeof *y);
+    0.00 :   1110:   lea    0x0(,%rbx,4),%rdi
+         : 44   int *x = malloc(total * sizeof *x);
+    0.00 :   1118:   mov    %rax,%r13
+         : 46   int *y = malloc(total * sizeof *y);
+    0.00 :   111b:   call   1080 <malloc@plt>
+         : 48   int *z = malloc(total * sizeof *z);
+    0.00 :   1120:   lea    0x0(,%rbx,4),%rdi
+         : 50   int *y = malloc(total * sizeof *y);
+    0.00 :   1128:   mov    %rax,%r14
+         : 52   int *z = malloc(total * sizeof *z);
+    0.00 :   112b:   call   1080 <malloc@plt>
+         : 54   if (!x || !y || !z) {
+    0.00 :   1130:   test   %r13,%r13
+         : 56   int *z = malloc(total * sizeof *z);
+    0.00 :   1133:   mov    %rax,%r15
+         : 58   if (!x || !y || !z) {
+    0.00 :   1136:   sete   %al
+    0.00 :   1139:   test   %r14,%r14
+    0.00 :   113c:   sete   %dl
+    0.00 :   113f:   or     %dl,%al
+    0.00 :   1141:   jne    146a <main+0x3aa>
+    0.00 :   1147:   test   %r15,%r15
+    0.00 :   114a:   je     146a <main+0x3aa>
+         : 66   fprintf(stderr, "allocation failed\n");
+         : 67   return 1;
+         : 68   }
+         :
+         : 70   uint64_t s = 0x243f6a8885a308d3ULL;
+    0.00 :   1150:   movabs $0x243f6a8885a308d3,%rcx
+         : 72   for (size_t i = 0; i < total; i++) {
+    0.00 :   115a:   xor    %edi,%edi
+         : 74   x[i] = (int)(xorshift64(&s) % 1000);
+    0.00 :   115c:   movabs $0x20c49ba5e353f7cf,%r8
+    0.00 :   1166:   cs nopw 0x0(%rax,%rax,1)
+         : 77   }
+         :
+         : 79   static inline uint64_t xorshift64(uint64_t *s)
+         : 80   {
+         : 81   uint64_t x = *s;
+         : 82   x ^= x << 13;
+    0.00 :   1170:   mov    %rcx,%rsi
+    0.00 :   1173:   shl    $0xd,%rsi
+    0.00 :   1177:   xor    %rcx,%rsi
+         : 86   x ^= x >> 7;
+    0.00 :   117a:   mov    %rsi,%rax
+    0.00 :   117d:   shr    $0x7,%rax
+    0.00 :   1181:   xor    %rax,%rsi
+         : 90   x ^= x << 17;
+    0.00 :   1184:   mov    %rsi,%rax
+    0.00 :   1187:   shl    $0x11,%rax
+    0.00 :   118b:   xor    %rax,%rsi
+    0.00 :   118e:   mov    %rsi,%rdx
+         : 95   x ^= x << 13;
+    0.00 :   1191:   mov    %rsi,%rcx
+    0.00 :   1194:   shr    $0x3,%rdx
+    0.00 :   1198:   shl    $0xd,%rcx
+    0.00 :   119c:   mov    %rdx,%rax
+    0.00 :   119f:   xor    %rsi,%rcx
+    0.00 :   11a2:   mul    %r8
+    0.00 :   11a5:   mov    %rsi,%rax
+    0.00 :   11a8:   shr    $0x4,%rdx
+    0.00 :   11ac:   imul   $0x3e8,%rdx,%rdx
+   18.75 :   11b3:   sub    %rdx,%rax
+    6.25 :   11b6:   mov    %eax,0x0(%r13,%rdi,4)
+         : 107  x ^= x >> 7;
+   12.50 :   11bb:   mov    %rcx,%rax
+    0.00 :   11be:   shr    $0x7,%rax
+    0.00 :   11c2:   xor    %rax,%rcx
+         : 111  x ^= x << 17;
+    0.00 :   11c5:   mov    %rcx,%rax
+    0.00 :   11c8:   shl    $0x11,%rax
+    0.00 :   11cc:   xor    %rax,%rcx
+         : 115  y[i] = (int)(xorshift64(&s) % 1000);
+    0.00 :   11cf:   mov    %rcx,%rdx
+    0.00 :   11d2:   shr    $0x3,%rdx
+   18.75 :   11d6:   mov    %rdx,%rax
+    0.00 :   11d9:   mul    %r8
+    0.00 :   11dc:   mov    %rcx,%rax
+    0.00 :   11df:   shr    $0x4,%rdx
+    0.00 :   11e3:   imul   $0x3e8,%rdx,%rdx
+   18.75 :   11ea:   sub    %rdx,%rax
+    0.00 :   11ed:   mov    %eax,(%r14,%rdi,4)
+         : 125  for (size_t i = 0; i < total; i++) {
+   18.75 :   11f1:   add    $0x1,%rdi
+    0.00 :   11f5:   cmp    %rdi,%rbx
+    0.00 :   11f8:   jne    1170 <main+0xb0>
+         : 129  clock_gettime(CLOCK_MONOTONIC, &ts);
+    0.00 :   11fe:   lea    -0x40(%rbp),%rsi
+    0.00 :   1202:   mov    $0x1,%edi
+    0.00 :   1207:   call   1040 <clock_gettime@plt>
+         : 133  return (double)ts.tv_sec + (double)ts.tv_nsec * 1e-9;
+    0.00 :   120c:   pxor   %xmm0,%xmm0
+    0.00 :   1210:   pxor   %xmm1,%xmm1
+         : 136  }
+         :
+         : 138  double t0 = now_sec();
+         : 139  vecmul_kernel(x, y, z, nv, len, reps);
+    0.00 :   1214:   mov    -0x44(%rbp),%ecx
+    0.00 :   1217:   cvtsi2sdq -0x38(%rbp),%xmm0
+    0.00 :   121d:   mov    -0x48(%rbp),%r8d
+    0.00 :   1221:   mov    %r12d,%r9d
+    0.00 :   1224:   mov    %r15,%rdx
+    0.00 :   1227:   mulsd  0xe69(%rip),%xmm0        # 2098 <_IO_stdin_used+0x98>
+    0.00 :   122f:   cvtsi2sdq -0x40(%rbp),%xmm1
+    0.00 :   1235:   mov    %r14,%rsi
+    0.00 :   1238:   mov    %r13,%rdi
+    0.00 :   123b:   addsd  %xmm1,%xmm0
+    0.00 :   123f:   movsd  %xmm0,-0x50(%rbp)
+    0.00 :   1244:   call   15c0 <vecmul_kernel>
+         : 152  clock_gettime(CLOCK_MONOTONIC, &ts);
+    0.00 :   1249:   lea    -0x40(%rbp),%rsi
+    0.00 :   124d:   mov    $0x1,%edi
+    0.00 :   1252:   call   1040 <clock_gettime@plt>
+         : 156  return (double)ts.tv_sec + (double)ts.tv_nsec * 1e-9;
+    0.00 :   1257:   pxor   %xmm1,%xmm1
+    0.00 :   125b:   cvtsi2sdq -0x38(%rbp),%xmm1
+    0.00 :   1261:   lea    -0x1(%rbx),%rax
+    0.00 :   1265:   mulsd  0xe2b(%rip),%xmm1        # 2098 <_IO_stdin_used+0x98>
+    0.00 :   126d:   pxor   %xmm0,%xmm0
+    0.00 :   1271:   cvtsi2sdq -0x40(%rbp),%xmm0
+    0.00 :   1277:   addsd  %xmm0,%xmm1
+         : 164  double t1 = now_sec();
+         :
+         : 166  uint64_t sum = 0;
+         : 167  for (size_t i = 0; i < total; i++)
+    0.00 :   127b:   cmp    $0x2,%rax
+    0.00 :   127f:   jbe    1460 <main+0x3a0>
+    0.00 :   1285:   mov    %rbx,%rcx
+    0.00 :   1288:   mov    %r15,%rax
+    0.00 :   128b:   pxor   %xmm3,%xmm3
+    0.00 :   128f:   shr    $0x2,%rcx
+    0.00 :   1293:   mov    %rcx,%rdx
+    0.00 :   1296:   shl    $0x4,%rdx
+    0.00 :   129a:   add    %r15,%rdx
+    0.00 :   129d:   xchg   %ax,%ax
+    0.00 :   129f:   data16 cs nopw 0x0(%rax,%rax,1)
+    0.00 :   12aa:   data16 cs nopw 0x0(%rax,%rax,1)
+    0.00 :   12b5:   data16 cs nopw 0x0(%rax,%rax,1)
+         : 181  sum += (uint64_t)z[i];
+    0.00 :   12c0:   movdqu (%rax),%xmm0
+    0.00 :   12c4:   add    $0x10,%rax
+    0.00 :   12c8:   movdqa %xmm0,%xmm2
+    0.00 :   12cc:   movdqa %xmm0,%xmm4
+    0.00 :   12d0:   psrad  $0x1f,%xmm2
+    0.00 :   12d5:   punpckhdq %xmm2,%xmm4
+    0.00 :   12d9:   punpckldq %xmm2,%xmm0
+    6.25 :   12dd:   paddq  %xmm4,%xmm0
+    0.00 :   12e1:   paddq  %xmm0,%xmm3
+         : 191  for (size_t i = 0; i < total; i++)
+    0.00 :   12e5:   cmp    %rax,%rdx
+    0.00 :   12e8:   jne    12c0 <main+0x200>
+    0.00 :   12ea:   movdqa %xmm3,%xmm0
+    0.00 :   12ee:   lea    0x0(,%rcx,4),%rax
+    0.00 :   12f6:   psrldq $0x8,%xmm0
+    0.00 :   12fb:   paddq  %xmm0,%xmm3
+    0.00 :   12ff:   movq   %xmm3,%r8
+    0.00 :   1304:   cmp    %rax,%rbx
+    0.00 :   1307:   je     1332 <main+0x272>
+         : 201  sum += (uint64_t)z[i];
+    0.00 :   1309:   movslq (%r15,%rax,4),%rdx
+    0.00 :   130d:   add    %rdx,%r8
+         : 204  for (size_t i = 0; i < total; i++)
+    0.00 :   1310:   lea    0x1(%rax),%rdx
+    0.00 :   1314:   cmp    %rbx,%rdx
+    0.00 :   1317:   jae    1332 <main+0x272>
+         : 208  sum += (uint64_t)z[i];
+    0.00 :   1319:   movslq 0x4(%r15,%rax,4),%rdx
+    0.00 :   131e:   add    %rdx,%r8
+         : 211  for (size_t i = 0; i < total; i++)
+    0.00 :   1321:   lea    0x2(%rax),%rdx
+    0.00 :   1325:   cmp    %rbx,%rdx
+    0.00 :   1328:   jae    1332 <main+0x272>
+         : 215  sum += (uint64_t)z[i];
+    0.00 :   132a:   movslq 0x8(%r15,%rax,4),%rax
+    0.00 :   132f:   add    %rax,%r8
+         :
+         : 219  printf("RESULT kernel=vecmul impl=seq threads=1 nv=%d len=%d reps=%d flops=%.0f time=%.6f checksum=%llu\n",
+         : 220  nv, len, reps, (double)total * reps, t1 - t0, (unsigned long long)sum);
+    0.00 :   1332:   pxor   %xmm0,%xmm0
+         : 222  printf("RESULT kernel=vecmul impl=seq threads=1 nv=%d len=%d reps=%d flops=%.0f time=%.6f checksum=%llu\n",
+    0.00 :   1336:   pxor   %xmm2,%xmm2
+    0.00 :   133a:   subsd  -0x50(%rbp),%xmm1
+    0.00 :   133f:   mov    -0x48(%rbp),%edx
+    0.00 :   1342:   cvtsi2sd %r12d,%xmm2
+         : 227  nv, len, reps, (double)total * reps, t1 - t0, (unsigned long long)sum);
+    0.00 :   1347:   cvtsi2sd %rbx,%xmm0
+         : 229  printf("RESULT kernel=vecmul impl=seq threads=1 nv=%d len=%d reps=%d flops=%.0f time=%.6f checksum=%llu\n",
+    0.00 :   134c:   mov    -0x44(%rbp),%esi
+    0.00 :   134f:   mulsd  %xmm2,%xmm0
+    0.00 :   1353:   mov    %r12d,%ecx
+    0.00 :   1356:   lea    0xcd3(%rip),%rdi        # 2030 <_IO_stdin_used+0x30>
+    0.00 :   135d:   mov    $0x2,%eax
+    0.00 :   1362:   call   1050 <printf@plt>
+         :
+         : 237  free(x);
+    0.00 :   1367:   mov    %r13,%rdi
+    0.00 :   136a:   call   1030 <free@plt>
+         : 240  free(y);
+    0.00 :   136f:   mov    %r14,%rdi
+    0.00 :   1372:   call   1030 <free@plt>
+         : 243  free(z);
+    0.00 :   1377:   mov    %r15,%rdi
+    0.00 :   137a:   call   1030 <free@plt>
+         : 246  return 0;
+    0.00 :   137f:   mov    -0x10(%rbp),%r14
+    0.00 :   1383:   mov    -0x8(%rbp),%r15
+    0.00 :   1387:   xor    %eax,%eax
+         : 250  }
+    0.00 :   1389:   mov    -0x28(%rbp),%rbx
+    0.00 :   138d:   mov    -0x20(%rbp),%r12
+    0.00 :   1391:   mov    -0x18(%rbp),%r13
+    0.00 :   1395:   leave
+    0.00 :   1396:   ret
+    0.00 :   1397:   mov    %edi,%ebx
+         :
+         : 258  #ifdef __USE_EXTERN_INLINES
+         : 259  __extern_inline int
+         : 260  __NTH (atoi (const char *__nptr))
+         : 261  {
+         : 262  return (int) strtol (__nptr, (char **) NULL, 10);
+    0.00 :   1399:   mov    0x8(%rsi),%rdi
+    0.00 :   139d:   mov    %rsi,%r13
+    0.00 :   13a0:   mov    $0xa,%edx
+    0.00 :   13a5:   xor    %esi,%esi
+    0.00 :   13a7:   call   1070 <strtol@plt>
+    0.00 :   13ac:   mov    %eax,-0x44(%rbp)
+    0.00 :   13af:   mov    %rax,%r12
+         : 270  int len = argc > 2 ? atoi(argv[2]) : 7168;
+    0.00 :   13b2:   cmp    $0x2,%ebx
+    0.00 :   13b5:   jne    13d5 <main+0x315>
+         : 273  if (nv <= 0 || len <= 0 || reps <= 0) {
+    0.00 :   13b7:   test   %eax,%eax
+    0.00 :   13b9:   jle    1420 <main+0x360>
+    0.00 :   13bb:   mov    %r14,-0x10(%rbp)
+         : 277  int reps = argc > 3 ? atoi(argv[3]) : 1000;
+    0.00 :   13bf:   mov    $0x3e8,%r12d
+    0.00 :   13c5:   mov    %r15,-0x8(%rbp)
+         : 280  int len = argc > 2 ? atoi(argv[2]) : 7168;
+    0.00 :   13c9:   movl   $0x1c00,-0x48(%rbp)
+    0.00 :   13d0:   jmp    10f9 <main+0x39>
+    0.00 :   13d5:   mov    0x10(%r13),%rdi
+    0.00 :   13d9:   xor    %esi,%esi
+    0.00 :   13db:   mov    $0xa,%edx
+    0.00 :   13e0:   mov    %r15,-0x8(%rbp)
+    0.00 :   13e4:   call   1070 <strtol@plt>
+         : 288  if (nv <= 0 || len <= 0 || reps <= 0) {
+    0.00 :   13e9:   test   %r12d,%r12d
+    0.00 :   13ec:   setle  %r15b
+    0.00 :   13f0:   test   %eax,%eax
+    0.00 :   13f2:   mov    %eax,-0x48(%rbp)
+    0.00 :   13f5:   setle  %al
+    0.00 :   13f8:   or     %eax,%r15d
+         : 295  int reps = argc > 3 ? atoi(argv[3]) : 1000;
+    0.00 :   13fb:   cmp    $0x3,%ebx
+    0.00 :   13fe:   je     1443 <main+0x383>
+    0.00 :   1400:   mov    0x18(%r13),%rdi
+    0.00 :   1404:   mov    $0xa,%edx
+    0.00 :   1409:   xor    %esi,%esi
+    0.00 :   140b:   call   1070 <strtol@plt>
+    0.00 :   1410:   mov    %eax,%r12d
+         : 303  if (nv <= 0 || len <= 0 || reps <= 0) {
+    0.00 :   1413:   test   %eax,%eax
+    0.00 :   1415:   jle    141c <main+0x35c>
+    0.00 :   1417:   test   %r15b,%r15b
+    0.00 :   141a:   je     1457 <main+0x397>
+    0.00 :   141c:   mov    -0x8(%rbp),%r15
+         : 309  fprintf(stderr, "usage: %s nv len reps\n", argv[0]);
+    0.00 :   1420:   mov    0x0(%r13),%rdx
+    0.00 :   1424:   mov    0x2c35(%rip),%rdi        # 4060 <stderr@GLIBC_2.2.5>
+    0.00 :   142b:   lea    0xbd2(%rip),%rsi        # 2004 <_IO_stdin_used+0x4>
+    0.00 :   1432:   xor    %eax,%eax
+    0.00 :   1434:   call   1060 <fprintf@plt>
+         : 315  return 1;
+    0.00 :   1439:   mov    $0x1,%eax
+    0.00 :   143e:   jmp    1389 <main+0x2c9>
+         : 318  if (nv <= 0 || len <= 0 || reps <= 0) {
+    0.00 :   1443:   test   %r15b,%r15b
+    0.00 :   1446:   jne    141c <main+0x35c>
+    0.00 :   1448:   mov    %r14,-0x10(%rbp)
+         : 322  int reps = argc > 3 ? atoi(argv[3]) : 1000;
+    0.00 :   144c:   mov    $0x3e8,%r12d
+    0.00 :   1452:   jmp    10f9 <main+0x39>
+    0.00 :   1457:   mov    %r14,-0x10(%rbp)
+    0.00 :   145b:   jmp    10f9 <main+0x39>
+         : 327  for (size_t i = 0; i < total; i++)
+    0.00 :   1460:   xor    %eax,%eax
+         : 329  uint64_t sum = 0;
+    0.00 :   1462:   xor    %r8d,%r8d
+    0.00 :   1465:   jmp    1309 <main+0x249>
+         : 332  fprintf(stderr, "allocation failed\n");
+    0.00 :   146a:   mov    0x2bef(%rip),%rcx        # 4060 <stderr@GLIBC_2.2.5>
+    0.00 :   1471:   mov    $0x12,%edx
+    0.00 :   1476:   mov    $0x1,%esi
+    0.00 :   147b:   lea    0xb99(%rip),%rdi        # 201b <_IO_stdin_used+0x1b>
+    0.00 :   1482:   call   1090 <fwrite@plt>
+    0.00 :   1487:   mov    -0x10(%rbp),%r14
+    0.00 :   148b:   mov    -0x8(%rbp),%r15
+         : 340  return 1;
+    0.00 :   148f:   jmp    1439 <main+0x379>

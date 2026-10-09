@@ -1,0 +1,33 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 943  of event 'cpu-clock:u'
+# Event count (approx.): 235750000
+#
+# Overhead  Command     Shared Object         Symbol                
+# ........  ..........  ....................  ......................
+#
+    98.20%  vecmul_seq  vecmul_seq            [.] vecmul_kernel
+            |
+            ---vecmul_kernel
+               now_sec (inlined)
+               main
+               0x7fa871a2a3fe
+               0x7ffdbab85aab
+               0x7165735f6c756d63
+
+     1.70%  vecmul_seq  vecmul_seq            [.] main
+            |          
+             --1.48%--main
+                       0x7fa871a2a3fe
+                       0x7ffdbab85aab
+                       0x7165735f6c756d63
+
+     0.11%  vecmul_seq  ld-linux-x86-64.so.2  [.] 0x000000000000fd35
+
+
+#
+# (Tip: To see how parallelism changes over time, try: perf report -F time,latency,parallelism --time-quantum=1s)
+#

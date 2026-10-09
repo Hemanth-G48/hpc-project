@@ -1,0 +1,65 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 1K of event 'cpu-clock:u'
+# Event count (approx.): 495750000
+#
+# Overhead  Command       Shared Object  Symbol       
+# ........  ............  .............  .............
+#
+    94.60%  sparselu_seq  sparselu_seq   [.] factorize
+            |          
+            |--32.63%--solve_lower_unit (inlined)
+            |          factorize
+            |          now_sec (inlined)
+            |          main
+            |          0x7fe59ce2a3fe
+            |          0x7ffd79978aae
+            |          0x735f756c65737261
+            |          
+            |--31.27%--solve_upper (inlined)
+            |          factorize
+            |          now_sec (inlined)
+            |          main
+            |          0x7fe59ce2a3fe
+            |          0x7ffd79978aae
+            |          0x735f756c65737261
+            |          
+            |--22.24%--schur (inlined)
+            |          factorize
+            |          now_sec (inlined)
+            |          main
+            |          0x7fe59ce2a3fe
+            |          0x7ffd79978aae
+            |          0x735f756c65737261
+            |          
+             --8.47%--lu_nopivot (inlined)
+                       factorize
+                       now_sec (inlined)
+                       main
+                       0x7fe59ce2a3fe
+                       0x7ffd79978aae
+                       0x735f756c65737261
+
+     5.35%  sparselu_seq  sparselu_seq   [.] main
+            |          
+            |--3.93%--main
+            |          0x7fe59ce2a3fe
+            |          0x7ffd79978aae
+            |          0x735f756c65737261
+            |          
+             --0.71%--xorshift64 (inlined)
+                       frand01 (inlined)
+                       main
+                       0x7fe59ce2a3fe
+                       0x7ffd79978aae
+                       0x735f756c65737261
+
+     0.05%  sparselu_seq  libc.so.6      [.] __sysconf
+
+
+#
+# (Tip: To see how parallelism changes over time, try: perf report -F time,latency,parallelism --time-quantum=1s)
+#

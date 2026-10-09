@@ -1,0 +1,18 @@
+    99.04%  kmeans_seq  kmeans_seq     [.] iterate
+            |
+            ---iterate
+               now_sec (inlined)
+               main
+               0x7f19b482a3fe
+               0x7ffd9b3bbaa8
+               0x7165735f736e6165
+
+     0.96%  kmeans_seq  kmeans_seq     [.] main
+            |          
+             --0.69%--main
+                       0x7f19b482a3fe
+                       0x7ffd9b3bbaa8
+                       0x7165735f736e6165
+
+
+

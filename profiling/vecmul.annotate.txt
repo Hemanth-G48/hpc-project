@@ -1,0 +1,60 @@
+ Percent |	Source code & Disassembly of vecmul_seq for cpu-clock:u (926 samples, percent: local period)
+------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3    Disassembly of section .text:
+         :
+         : 5    00000000000015c0 <vecmul_kernel>:
+         : 6    #include <stdlib.h>
+         : 7    #include "common.h"
+         :
+         : 9    static void NOINLINE vecmul_kernel(const int *x, const int *y, int *z,
+         : 10   int nv, int len, int reps)
+         : 11   {
+    0.00 :   15c0:   push   %rbp
+    0.00 :   15c1:   mov    %r8d,%eax
+    0.00 :   15c4:   mov    %rdi,%r11
+         : 15   for (int r = 0; r < reps; r++)
+    0.00 :   15c7:   xor    %r8d,%r8d
+         : 17   {
+    0.00 :   15ca:   mov    %rsp,%rbp
+    0.00 :   15cd:   push   %r15
+    0.00 :   15cf:   mov    %rsi,%r15
+    0.00 :   15d2:   push   %r14
+    0.00 :   15d4:   mov    %rax,%r14
+    0.00 :   15d7:   push   %r13
+    0.00 :   15d9:   lea    -0x1(%rax),%r13d
+    0.00 :   15dd:   push   %r12
+    0.00 :   15df:   mov    %r9d,%r12d
+    0.00 :   15e2:   lea    0x0(,%rax,4),%r9
+    0.00 :   15ea:   push   %rbx
+    0.00 :   15eb:   mov    %rdx,%rbx
+         : 30   for (int k = 0; k < nv; k++) {
+         : 31   const int *xk = x + (size_t)k * len;
+    0.00 :   15ee:   mov    %rax,-0x48(%rbp)
+    0.00 :   15f2:   shr    $0x2,%eax
+    0.00 :   15f5:   mov    %eax,%esi
+    0.00 :   15f7:   shl    $0x2,%eax
+         : 36   {
+    0.00 :   15fa:   mov    %ecx,-0x38(%rbp)
+         : 38   const int *yk = y + (size_t)k * len;
+         : 39   int *zk = z + (size_t)k * len;
+         : 40   for (int j = 0; j < len; j++)
+    0.00 :   15fd:   lea    0x1(%rax),%edi
+    0.00 :   1600:   mov    %eax,-0x34(%rbp)
+    0.00 :   1603:   add    $0x2,%eax
+    0.00 :   1606:   shl    $0x4,%rsi
+    0.00 :   160a:   mov    %edi,-0x50(%rbp)
+         : 46   zk[j] = xk[j] * yk[j];
+    0.00 :   160d:   mov    %rdi,-0x60(%rbp)
+    0.00 :   1611:   mov    %r13d,-0x64(%rbp)
+    0.00 :   1615:   mov    %r12d,-0x6c(%rbp)
+         : 50   for (int j = 0; j < len; j++)
+    0.00 :   1619:   mov    %eax,-0x4c(%rbp)
+    0.00 :   161c:   mov    %r14d,%eax
+    0.00 :   161f:   mov    %r15,%r14
+    0.00 :   1622:   mov    %eax,%r15d
+    0.00 :   1625:   data16 cs nopw 0x0(%rax,%rax,1)
+         : 56   for (int k = 0; k < nv; k++) {
+    0.00 :   1630:   mov    %r8d,-0x68(%rbp)

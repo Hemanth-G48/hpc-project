@@ -1,0 +1,60 @@
+ Percent |	Source code & Disassembly of heat2d_seq for cpu-clock:u (6116 samples, percent: local period)
+-------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3    Disassembly of section .text:
+         :
+         : 5    0000000000001480 <jacobi>:
+         : 6    #include <stdio.h>
+         : 7    #include <stdlib.h>
+         : 8    #include "common.h"
+         :
+         : 10   static void NOINLINE jacobi(double **up, double **vp, int n, int iters)
+         : 11   {
+    0.00 :   1480:   push   %rbp
+    0.00 :   1481:   mov    %rdi,%r10
+    0.00 :   1484:   mov    %rsi,%r11
+    0.00 :   1487:   mov    %rsp,%rbp
+    0.00 :   148a:   sub    $0x28,%rsp
+    0.00 :   148e:   mov    %r15,-0x8(%rbp)
+    0.00 :   1492:   mov    %edx,-0x3c(%rbp)
+         : 19   double *u = *up;
+         : 20   double *v = *vp;
+    0.00 :   1495:   mov    (%rsi),%rax
+         : 22   double *u = *up;
+    0.00 :   1498:   mov    (%rdi),%r15
+         : 24   double *v = *vp;
+    0.00 :   149b:   mov    %rax,-0x48(%rbp)
+         :
+         : 27   for (int t = 0; t < iters; t++) {
+    0.00 :   149f:   test   %ecx,%ecx
+    0.00 :   14a1:   je     16d4 <jacobi+0x254>
+    0.00 :   14a7:   mov    %rbx,-0x28(%rbp)
+    0.00 :   14ab:   mov    %edx,%ebx
+    0.00 :   14ad:   mov    %edx,%eax
+    0.00 :   14af:   mov    %ecx,%r8d
+    0.00 :   14b2:   shr    $1,%ebx
+    0.00 :   14b4:   mov    %r13,-0x18(%rbp)
+    0.00 :   14b8:   lea    -0x1(%rdx),%ecx
+    0.00 :   14bb:   movsd  0xbcd(%rip),%xmm1        # 2090 <_IO_stdin_used+0x90>
+    0.00 :   14c3:   lea    -0x1(%rbx),%r13d
+    0.00 :   14c7:   mov    %r14,-0x10(%rbp)
+    0.00 :   14cb:   lea    0x0(,%rax,8),%r14
+    0.00 :   14d3:   shl    $0x4,%rax
+    0.00 :   14d7:   lea    0x0(%r13,%r13,1),%ebx
+    0.00 :   14dc:   mov    %rax,%rdi
+    0.00 :   14df:   lea    0x8(%r14),%rsi
+    0.00 :   14e3:   mov    %r12,-0x20(%rbp)
+    0.00 :   14e7:   mov    %ebx,-0x50(%rbp)
+    0.00 :   14ea:   add    $0x1,%ebx
+    0.00 :   14ed:   lea    (%rdx,%rdx,1),%eax
+    0.00 :   14f0:   unpcklpd %xmm1,%xmm1
+    0.00 :   14f4:   mov    %ecx,-0x38(%rbp)
+         : 51   for (int i = 1; i < n - 1; i++)
+         : 52   for (int j = 1; j < n - 1; j++)
+         : 53   v[i * n + j] = 0.25 * (u[(i - 1) * n + j] + u[(i + 1) * n + j]
+    0.00 :   14f7:   movsd  0xb91(%rip),%xmm2        # 2090 <_IO_stdin_used+0x90>
+    0.00 :   14ff:   mov    %ebx,-0x54(%rbp)
+    0.00 :   1502:   mov    %rdi,-0x60(%rbp)
+    0.00 :   1506:   mov    %rsi,-0x68(%rbp)

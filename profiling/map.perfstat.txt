@@ -1,0 +1,33 @@
+
+ Performance counter stats for 'build/map_seq 48 131072 100':
+
+                 0      context-switches:u               #      0.0 cs/sec  cs_per_second     
+                 0      cpu-migrations:u                 #      0.0 migrations/sec  migrations_per_second
+                87      page-faults:u                    #    222.7 faults/sec  page_faults_per_second
+            390.59 msec task-clock:u                     #      nan CPUs  CPUs_utilized       
+        18,034,294      cpu_core/L1-dcache-load-misses/u #      nan %  l1d_miss_rate            (79.60%)
+        20,852,311      cpu_core/LLC-loads/u             #     98.0 %  llc_miss_rate            (79.60%)
+             9,101      cpu_core/branch-misses/u         #      0.0 %  branch_miss_rate         (69.91%)
+       324,097,765      cpu_core/branches/u              #    829.8 M/sec  branch_frequency     (69.92%)
+     1,325,828,728      cpu_core/cpu-cycles/u            #      3.4 GHz  cycles_frequency       (69.90%)
+     2,024,623,177      cpu_core/instructions/u          #      1.5 instructions  insn_per_cycle  (70.12%)
+                 0      cpu_atom/LLC-loads/u             #      nan %  llc_miss_rate            (0.01%)
+                 0      cpu_atom/branch-misses/u         #      0.0 %  branch_miss_rate         (0.03%)
+             6,512      cpu_atom/branches/u              #      0.0 M/sec  branch_frequency     (0.03%)
+        11,162,174      cpu_atom/cpu-cycles/u            #      0.0 GHz  cycles_frequency       (0.03%)
+             6,512      cpu_atom/instructions/u          #      0.0 instructions  insn_per_cycle  (0.03%)
+ TopdownL1 (cpu_core) #      0.0 %  tma_bad_speculation    
+                                                         #     -0.0 %  tma_frontend_bound       (80.09%)
+                                                         #     72.9 %  tma_backend_bound      
+                                                         #     27.1 %  tma_retiring             (80.09%)
+ TopdownL1 (cpu_atom) #      nan %  tma_backend_bound        (0.00%)
+                                                         #      nan %  tma_frontend_bound       (0.00%)
+                                                         #      nan %  tma_bad_speculation    
+                                                         #      nan %  tma_retiring             (0.00%)
+
+       0.392709178 seconds time elapsed
+
+       0.379375000 seconds user
+       0.005838000 seconds sys
+
+
