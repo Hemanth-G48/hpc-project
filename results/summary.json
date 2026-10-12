@@ -1,0 +1,107 @@
+{
+  "work_stealing_remote": {
+    "sim_seconds": 0.012279,
+    "sim_ticks": 12279429000.0,
+    "cycles": 98235432.0,
+    "instructions": 12608347.0,
+    "cpi": 7.79130142912469,
+    "l2_misses": 132005.0,
+    "l2_miss_latency_ticks": 226713.22298397787,
+    "bank_accesses": [
+      718.0,
+      0.0,
+      0.0,
+      246736.0
+    ]
+  },
+  "fine_interleaved": {
+    "sim_seconds": 0.00933,
+    "sim_ticks": 9330387000.0,
+    "cycles": 74643096.0,
+    "instructions": 12608347.0,
+    "cpi": 5.920133384653833,
+    "l2_misses": 132004.0,
+    "l2_miss_latency_ticks": 137353.36050422714,
+    "bank_accesses": [
+      62352.0,
+      61467.0,
+      61443.0,
+      62189.0
+    ]
+  },
+  "locality_aware_coarse": {
+    "sim_seconds": 0.006381,
+    "sim_ticks": 6381268500.0,
+    "cycles": 51050148.0,
+    "instructions": 12608347.0,
+    "cpi": 4.048916800909747,
+    "l2_misses": 132004.0,
+    "l2_miss_latency_ticks": 47987.95491045726,
+    "bank_accesses": [
+      246705.0,
+      0.0,
+      0.0,
+      747.0
+    ]
+  },
+  "dist_30ns": {
+    "sim_seconds": 0.006381,
+    "sim_ticks": 6381268500.0,
+    "cycles": 51050148.0,
+    "instructions": 12608347.0,
+    "cpi": 4.048916800909747,
+    "l2_misses": 132004.0,
+    "l2_miss_latency_ticks": 47987.95491045726,
+    "bank_accesses": [
+      246705.0,
+      0.0,
+      0.0,
+      747.0
+    ]
+  },
+  "dist_90ns": {
+    "sim_seconds": 0.008359,
+    "sim_ticks": 8359240000.0,
+    "cycles": 66873920.0,
+    "instructions": 12608347.0,
+    "cpi": 5.303940318266939,
+    "l2_misses": 132003.0,
+    "l2_miss_latency_ticks": 107793.24333537873,
+    "bank_accesses": [
+      246705.0,
+      0.0,
+      0.0,
+      747.0
+    ]
+  },
+  "dist_150ns": {
+    "sim_seconds": 0.010337,
+    "sim_ticks": 10336986000.0,
+    "cycles": 82695888.0,
+    "instructions": 12608347.0,
+    "cpi": 6.558820755805658,
+    "l2_misses": 132003.0,
+    "l2_miss_latency_ticks": 167597.94853147276,
+    "bank_accesses": [
+      246705.0,
+      0.0,
+      0.0,
+      747.0
+    ]
+  },
+  "dist_210ns": {
+    "sim_seconds": 0.012315,
+    "sim_ticks": 12314713500.0,
+    "cycles": 98517708.0,
+    "instructions": 12608347.0,
+    "cpi": 7.81368945508876,
+    "l2_misses": 132002.0,
+    "l2_miss_latency_ticks": 227403.8991833457,
+    "bank_accesses": [
+      246705.0,
+      0.0,
+      0.0,
+      747.0
+    ]
+  }
+}

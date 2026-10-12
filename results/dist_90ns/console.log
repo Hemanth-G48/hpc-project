@@ -1,0 +1,56 @@
+warn: Base 10 memory/cache size 32kB will be cast to base 2 size 32KiB.
+warn: Base 10 memory/cache size 32kB will be cast to base 2 size 32KiB.
+warn: Base 10 memory/cache size 256kB will be cast to base 2 size 256KiB.
+warn: Base 10 memory/cache size 32MB will be cast to base 2 size 32MiB.
+warn: Base 10 memory/cache size 12.8GB/s will be cast to base 2 size 12.8GiB/s.
+warn: Base 10 memory/cache size 12.8GB/s will be cast to base 2 size 12.8GiB/s.
+warn: Base 10 memory/cache size 12.8GB/s will be cast to base 2 size 12.8GiB/s.
+warn: Base 10 memory/cache size 12.8GB/s will be cast to base 2 size 12.8GiB/s.
+Global frequency set at 1000000000000 ticks per second
+warn: No dot file generated. Please install pydot to generate the dot file and pdf.
+src/base/statistics.hh:279: warn: One of the stats is a legacy stat. Legacy stat is a stat that does not belong to any statistics::Group. Legacy stat is deprecated.
+src/base/remote_gdb.cc:418: warn: Sockets disabled, not accepting gdb connections
+gem5 Simulator System.  https://www.gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 version 24.1.0.1
+gem5 compiled Oct 12 2026 20:50:15
+gem5 started Oct 12 2026 20:56:02
+gem5 executing on 0e5b82d6a9df, pid 19336
+command line: /gem5/build/X86/gem5.opt --outdir=/work/results/dist_90ns /work/configs/numa_system.py --binary /work/benchmarks/map_numa --options 'local 4 4 32 2048 1' --cores 4 --banks 4 --bank-size 32MB --latencies 90ns,90ns,150ns,210ns
+
+info: Standard input is not a terminal, disabling listeners.
+NUMA map of the simulated machine
+  total physical memory: 128 MB in 4 banks
+  bank 0: 0x000000000 - 0x002000000 (32 MB)  latency   90ns  (near)
+  bank 1: 0x002000000 - 0x004000000 (32 MB)  latency   90ns  (mid)
+  bank 2: 0x004000000 - 0x006000000 (32 MB)  latency  150ns  (mid)
+  bank 3: 0x006000000 - 0x008000000 (32 MB)  latency  210ns  (far)
+Simulation starting
+src/sim/simulate.cc:199: info: Entering event queue @ 0.  Starting simulation...
+src/sim/syscall_emul.cc:86: warn: ignoring syscall set_robust_list(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall rseq(...)
+src/sim/mem_state.cc:448: info: Increasing stack size by one page.
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+policy=local threads=4 banks=4 bank=32MB slice=2048KB repeats=1
+first-touch done over 112 MB
+starting parallel region
+src/sim/syscall_emul.cc:97: warn: ignoring syscall rt_sigaction(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.cc:97: warn: ignoring syscall rt_sigprocmask(...)
+      (further warnings will be suppressed)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/power_state.cc:105: warn: PowerState: Already in the requested power state, request ignored
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall mprotect(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall rseq(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall set_robust_list(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall rseq(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall set_robust_list(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall rseq(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall set_robust_list(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall madvise(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall madvise(...)
+src/sim/syscall_emul.cc:86: warn: ignoring syscall madvise(...)
+parallel region done, checksum=8192
+Exiting @ tick 13209581000 because exiting with last active thread context

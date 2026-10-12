@@ -1,0 +1,23 @@
+build/
+.commandcode/
+__pycache__/
+*.pyc
+*.pyo
+
+# built from benchmarks/map_numa.c by the gcc line in the README
+map_numa
+*.o
+
+# gem5 regenerates these on every run. config.ini and stats.txt are the ones
+# worth keeping: config.ini is the machine config, stats.txt is the data.
+config.json
+citations.bib
+m5out/
+
+*.perf.data
+*.perf.data.old
+gmon.out
+.~lock.*#
+
+# local only, deliberately not published
+REVIEW.md
